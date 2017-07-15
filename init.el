@@ -17,7 +17,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
  '(sml/mode-width (quote full))
  '(sml/name-width 50)
  '(sml/no-confirm-load-theme t)
@@ -63,6 +63,12 @@
 (use-package smart-mode-line) ;; Make the modeline suck less
 (sml/setup)
 
+;; Smartparens
+(use-package smartparens
+  :bind (("C-M-f" . sp-forward-sexp)
+  ("C-M-f" . sp-forward-sexp)))
+(require 'smartparens-config)
+
 ;; Flycheck
 (use-package flycheck
   :ensure t
@@ -84,6 +90,16 @@
 ;; Web mode
 (use-package web-mode
   :mode ("\\.html?\\'" . web-mode))
+;; Smartparens for web-mode
+(defun my-web-mode-hook ()
+  (setq web-mode-enable-auto-pairing nil))
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+(defun sp-web-mode-is-code-context (id action context)
+  (and (eq action 'insert)
+       (not (or (get-text-property (point) 'part-side)
+                (get-text-property (point) 'block-side)))))
+(sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
+
 
 ;; ### End of programming modes
 
@@ -139,6 +155,7 @@
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'prog-mode-hook #'smartparens-mode)
 
 ;; ## Minor Modes
 (setq show-paren-delay 0)
@@ -161,7 +178,7 @@
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
 ;; Color theme incantation.
-(load-theme 'whiteboard t);sometimes the theme gets overriden - workaround
+(load-theme 'whiteboard t) ;; sometimes the theme gets overriden - workaround
 (setq color-theme-is-global t)
 (color-theme-xemacs)
 
