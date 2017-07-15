@@ -1,3 +1,7 @@
+;;; init --- my init file
+;;; Commentary:
+;;; Just another Emacs hacker,
+;;; Code:
 ;; ## Custom-set
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -5,20 +9,26 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-blinks 0)
+ '(custom-enabled-themes (quote (smart-mode-line-light)))
  '(custom-safe-themes
    (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+ '(frame-resize-pixelwise t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+ '(sml/no-confirm-load-theme t)
+ '(sml/pos-minor-modes-separator "")
+ '(sml/theme (quote light))
  '(which-key-echo-keystrokes 0.1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(hc-tab ((t (:background "gray"))))
+ '(hc-trailing-whitespace ((t (:background "red")))))
 
 ;; ## Set up package lists & use-package
 (require 'package)
@@ -33,13 +43,38 @@
   (package-install 'use-package))
 
 ;; ## Enable packages
-(eval-when-compile
+(eval-when-compile ;; Make use-package auto-install everything
   (require 'use-package)
   (setq use-package-always-ensure t))
-(require 'diminish)
+(require 'diminish) ;; Bundled with emacs, no need to u-p it
+(use-package highlight-chars
+  :init (add-hook 'prog-mode-hook 'hc-highlight-trailing-whitespace))
 (use-package org-bullets)
-(use-package whitespace-cleanup-mode)
-(sml/setup) ; smart-mode-line
+(use-package color-theme)
+(color-theme-initialize)
+(use-package smart-tabs-mode)
+(use-package whitespace-cleanup-mode) ;; Since my .vimrc used to do the same thing
+(use-package delight) ;; Shorten some minor modes
+(use-package smart-mode-line) ;; Make the modeline suck less
+(sml/setup)
+
+;; Flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+;; Company
+(use-package company
+  :config (add-hook 'after-init-hook 'global-company-mode))
+
+;; Programming language modes
+;; Go mode. Dependencies:
+;; - github.com/nsf/gocode
+;; - github.com/godoctor/godoctor
+(use-package go-mode
+  :config (use-package godoctor)
+  :bind(("C-c C-r" . go-remove-unused-imports)))
+(use-package company-go)
 
 ;; Magit, with some bindings
 (use-package magit
@@ -67,9 +102,9 @@
     (require 'helm-config)
     (helm-mode 1))
   :bind(("M-x" . helm-M-x) ;; Please use helm everywhere xoxoxo
-	("C-x b" . helm-buffers-list)
-	("C-x C-b" . helm-buffers-list)
-	("C-x C-f" . helm-find-files))
+       ("C-x b" . helm-buffers-list)
+       ("C-x C-b" . helm-buffers-list)
+       ("C-x C-f" . helm-find-files))
   :config
   (require 'helm-files)
   (define-key helm-find-files-map ;; I mean it. Use helm *everywhere*
@@ -84,8 +119,8 @@
   (setq dashboard-banner-logo-title "EmacsOS - Ready.")
   (setq dashboard-startup-banner 'official)
   (setq dashboard-items '((recents  . 10)
-			  (projects . 10)
-			  (agenda . 5)))
+                          (projects . 10)
+                          (agenda . 5)))
   (dashboard-setup-startup-hook))
 
 ;; Which-key - spacemacs' nice little prefix popup
@@ -114,6 +149,10 @@
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
+;; Color theme incantation.
+(load-theme 'whiteboard t);sometimes the theme gets overriden - workaround
+(setq color-theme-is-global t)
+(color-theme-xemacs)
 
 ;; Remove visual clutter
 (scroll-bar-mode 0)
@@ -135,3 +174,6 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 (setq scroll-step 1) ;; keyboard scroll one line at a time
+
+(provide 'init)
+;;; init.el ends here
