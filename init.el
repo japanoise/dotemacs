@@ -17,7 +17,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (auto-async-byte-compile smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
  '(sml/no-confirm-load-theme t)
  '(sml/pos-minor-modes-separator "")
  '(sml/theme (quote light))
@@ -47,7 +47,6 @@
   (require 'use-package)
   (setq use-package-always-ensure t))
 (require 'diminish) ;; Bundled with emacs, no need to u-p it
-(use-package auto-async-byte-compile)
 (use-package highlight-chars
   :init (add-hook 'prog-mode-hook 'hc-highlight-trailing-whitespace))
 (use-package org-bullets)
@@ -159,11 +158,6 @@
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-
-;; https://www.emacswiki.org/emacs/AutoAsyncByteCompile
-(require 'auto-async-byte-compile)
-(setq auto-async-byte-compile-exclude-files-regexp "/junk/")
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 ;; stuff from ergoemacs.org
 ;; backup in one place. flat, no tree structure
