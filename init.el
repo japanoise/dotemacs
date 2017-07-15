@@ -17,7 +17,9 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+ '(sml/mode-width (quote full))
+ '(sml/name-width 50)
  '(sml/no-confirm-load-theme t)
  '(sml/pos-minor-modes-separator "")
  '(sml/theme (quote light))
@@ -28,7 +30,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hc-tab ((t (:background "gray"))))
- '(hc-trailing-whitespace ((t (:background "red")))))
+ '(hc-trailing-whitespace ((t (:background "red"))))
+ '(web-mode-doctype-face ((t (:background "black" :foreground "Grey"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "dark red"))))
+ '(web-mode-html-tag-face ((t (:foreground "dark blue")))))
 
 ;; ## Set up package lists & use-package
 (require 'package)
@@ -67,7 +72,7 @@
 (use-package company
   :config (add-hook 'after-init-hook 'global-company-mode))
 
-;; Programming language modes
+;; ### Programming language modes
 ;; Go mode. Dependencies:
 ;; - github.com/nsf/gocode
 ;; - github.com/godoctor/godoctor
@@ -75,6 +80,12 @@
   :config (use-package godoctor)
   :bind(("C-c C-r" . go-remove-unused-imports)))
 (use-package company-go)
+
+;; Web mode
+(use-package web-mode
+  :mode ("\\.html?\\'" . web-mode))
+
+;; ### End of programming modes
 
 ;; Magit, with some bindings
 (use-package magit
