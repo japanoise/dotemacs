@@ -14,6 +14,7 @@
    (quote
     ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(frame-resize-pixelwise t)
+ '(helm-buffer-max-length nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
@@ -31,6 +32,10 @@
  ;; If there is more than one, they won't work right.
  '(hc-tab ((t (:background "gray"))))
  '(hc-trailing-whitespace ((t (:background "red"))))
+ '(helm-ff-executable ((t (:foreground "forest green"))))
+ '(helm-ff-symlink ((t (:foreground "DarkOrange4"))))
+ '(isearch ((t (:background "paleturquoise" :foreground "black"))))
+ '(sh-heredoc ((t (:foreground "dark green"))))
  '(web-mode-doctype-face ((t (:background "black" :foreground "Grey"))))
  '(web-mode-html-attr-name-face ((t (:foreground "dark red"))))
  '(web-mode-html-tag-face ((t (:foreground "dark blue")))))
