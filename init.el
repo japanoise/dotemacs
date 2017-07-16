@@ -18,7 +18,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
  '(sml/mode-width (quote full))
  '(sml/name-width 50)
  '(sml/no-confirm-load-theme t)
@@ -32,6 +32,10 @@
  ;; If there is more than one, they won't work right.
  '(hc-tab ((t (:background "gray"))))
  '(hc-trailing-whitespace ((t (:background "red"))))
+ '(helm-M-x-key ((t (:foreground "medium blue" :underline t))))
+ '(helm-buffer-directory ((t (:foreground "dark slate gray"))))
+ '(helm-buffer-not-saved ((t (:foreground "midnight blue"))))
+ '(helm-buffer-process ((t (:foreground "dark violet"))))
  '(helm-ff-executable ((t (:foreground "forest green"))))
  '(helm-ff-symlink ((t (:foreground "DarkOrange4"))))
  '(isearch ((t (:background "paleturquoise" :foreground "black"))))
@@ -105,6 +109,14 @@
                 (get-text-property (point) 'block-side)))))
 (sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
 
+;; Markdown mode
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 ;; ### End of programming modes
 
@@ -182,6 +194,7 @@
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
+(setq initial-buffer-choice '(lambda () (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
 ;; Color theme incantation.
 (load-theme 'whiteboard t) ;; sometimes the theme gets overriden - workaround
