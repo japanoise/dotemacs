@@ -177,6 +177,7 @@
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
+(defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
 ;; Color theme incantation.
 (load-theme 'whiteboard t) ;; sometimes the theme gets overriden - workaround
 (setq color-theme-is-global t)
