@@ -258,5 +258,13 @@
 
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
+;; https://www.reddit.com/r/emacs/comments/2kdztw/emacs_in_evil_mode_show_tildes_for_blank_lines/
+;; Emacs-y tilde fringe
+(setq-default indicate-empty-lines t)
+(progn
+  (define-fringe-bitmap 'tilde [0 0 0 113 219 142 0 0] nil nil 'center)
+  (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
+(set-fringe-bitmap-face 'tilde 'font-lock-comment-face)
+
 (provide 'init)
 ;;; init.el ends here
