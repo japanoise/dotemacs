@@ -19,7 +19,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
  '(sml/mode-width (quote full))
  '(sml/name-width 50)
  '(sml/no-confirm-load-theme t)
@@ -187,6 +187,14 @@
 ;; Which-key - spacemacs' nice little prefix popup
 (use-package which-key
   :diminish which-key-mode)
+
+;; Neotree
+(use-package neotree
+  :bind(("M-n t s" . neotree)
+        ("M-n t t" . neotree-toggle)
+        ("M-n t p" . neotree-projectile-action))
+  :init (setq neo-smart-open t)
+  (setq projectile-switch-project-action 'neotree-projectile-action))
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
