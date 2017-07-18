@@ -30,6 +30,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(font-lock-doc-face ((t (:foreground "medium violet red"))))
  '(hc-tab ((t (:background "gray"))))
  '(hc-trailing-whitespace ((t (:background "red"))))
  '(helm-M-x-key ((t (:foreground "medium blue" :underline t))))
@@ -76,7 +77,7 @@
 (use-package smartparens
   :diminish smartparens-mode
   :bind (("C-M-f" . sp-forward-sexp)
-  ("C-M-f" . sp-forward-sexp)))
+  ("C-M-b" . sp-backward-sexp)))
 (require 'smartparens-config)
 
 ;; Flycheck
@@ -238,6 +239,7 @@
   (set-mouse-color "black"))
 (my-fix-cursor)
 ;; Keybindings
+(global-set-key (kbd "C-z") 'scroll-down-command)
 (global-set-key (kbd "C-M-z") 'scroll-other-window-down) ;; Nice command from uemacs
 (when (string-equal system-type "windows-nt") ;; ergoemacs.org
   (global-set-key (kbd "<apps>") 'execute-extended-command))
@@ -254,7 +256,7 @@
                                (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
 ;; Color theme incantation.
-(load-theme 'whiteboard t) ;; sometimes the theme gets overriden - workaround
+(load-theme 'tango t) ;; sometimes the theme gets overriden - workaround
 (setq color-theme-is-global t)
 (color-theme-xemacs)
 
