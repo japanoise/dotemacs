@@ -9,6 +9,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-blinks 0)
+ '(company-idle-delay 0.2)
  '(custom-enabled-themes (quote (smart-mode-line-light)))
  '(custom-safe-themes
    (quote
@@ -74,6 +75,7 @@
 
 ;; Smartparens
 (use-package smartparens
+  :diminish smartparens-mode
   :bind (("C-M-f" . sp-forward-sexp)
   ("C-M-f" . sp-forward-sexp)))
 (require 'smartparens-config)
@@ -85,6 +87,7 @@
 
 ;; Company
 (use-package company
+  :diminish company-mode
   :config (add-hook 'after-init-hook 'global-company-mode))
 
 ;; ### Programming language modes
@@ -182,7 +185,8 @@
   (dashboard-setup-startup-hook))
 
 ;; Which-key - spacemacs' nice little prefix popup
-(use-package which-key)
+(use-package which-key
+  :diminish which-key-mode)
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
