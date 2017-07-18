@@ -210,6 +210,7 @@
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (add-hook 'prog-mode-hook #'smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook (lambda () (setq indent-tabs-mode nil)))
 
 ;; ## Minor Modes
 (setq show-paren-delay 0)
