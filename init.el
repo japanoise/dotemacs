@@ -19,7 +19,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
  '(sml/mode-width (quote full))
  '(sml/name-width 50)
  '(sml/no-confirm-load-theme t)
@@ -171,11 +171,19 @@
   (define-key helm-find-files-map ;; I mean it. Use helm *everywhere*
     (kbd "C-x 4 C-f")
     #'helm-ff-run-switch-other-window))
+(use-package helm-projectile
+  :init (require 'helm-projectile)
+  (helm-projectile-on))
 
 ;; Spacemacs-style dashboard
 (use-package dashboard
   :ensure t
   :diminish dashboard-mode
+  :bind (
+	 :map dashboard-mode-map
+	 ("<down-mouse-1>" . nil)
+	 ("<mouse-1>" . widget-button-click)
+	 ("<mouse-2>" . widget-button-click))
   :config
   (setq dashboard-banner-logo-title "EmacsOS - Ready.")
   (setq dashboard-startup-banner 'official)
