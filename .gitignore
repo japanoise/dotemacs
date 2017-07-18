@@ -2,6 +2,7 @@ auto-save-list/
 bookmarks
 elpa/
 emacs-backup/
+eshell/
 network-security.data
 projectile-bookmarks.eld
 recentf
