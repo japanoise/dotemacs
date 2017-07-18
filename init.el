@@ -205,6 +205,8 @@
 
 ;; ## Misc. Customization
 (setq-default cursor-type 'bar)
+(setq x-pointer-shape x-pointer-xterm) ;; I-beam - makes the most sense for an editor.
+(set-mouse-color "black")
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
