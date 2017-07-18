@@ -19,7 +19,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
+    (diff-hl helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines smart-mode-line whitespace-cleanup-mode org-bullets helm)))
  '(sml/mode-width (quote full))
  '(sml/name-width 50)
  '(sml/no-confirm-load-theme t)
@@ -95,6 +95,7 @@
 ;; - github.com/nsf/gocode
 ;; - github.com/godoctor/godoctor
 ;; - golang.org/x/tools/cmd/goimports
+;; - github.com/rogpeppe/godef
 (use-package go-mode
   :config (use-package godoctor)
   :bind(("C-c C-r" . go-remove-unused-imports)))
@@ -140,6 +141,8 @@
 ;; Magit, with some bindings
 (use-package magit
   :bind(("M-n g s" . magit-status)))
+(use-package diff-hl)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 ;; Replace ^L with a horizontal rule
 (use-package page-break-lines
@@ -218,6 +221,7 @@
 (global-whitespace-cleanup-mode)
 (diminish 'whitespace-cleanup-mode)
 
+(global-diff-hl-mode 1)
 (global-page-break-lines-mode 1)
 (global-undo-tree-mode 1)
 (column-number-mode t)
