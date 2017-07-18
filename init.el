@@ -183,10 +183,10 @@
   :ensure t
   :diminish dashboard-mode
   :bind (
-	 :map dashboard-mode-map
-	 ("<down-mouse-1>" . nil)
-	 ("<mouse-1>" . widget-button-click)
-	 ("<mouse-2>" . widget-button-click))
+         :map dashboard-mode-map
+         ("<down-mouse-1>" . nil)
+         ("<mouse-1>" . widget-button-click)
+         ("<mouse-2>" . widget-button-click))
   :config
   (setq dashboard-banner-logo-title "EmacsOS - Ready.")
   (setq dashboard-startup-banner 'official)
@@ -228,6 +228,12 @@
 (which-key-mode)
 
 ;; ## Misc. Customization
+;; Keybindings
+(global-set-key (kbd "C-M-z") 'scroll-other-window-down) ;; Nice command from uemacs
+(when (string-equal system-type "windows-nt") ;; ergoemacs.org
+  (global-set-key (kbd "<apps>") 'execute-extended-command))
+
+;; Rice
 (setq-default cursor-type 'bar)
 (setq x-pointer-shape x-pointer-xterm) ;; I-beam - makes the most sense for an editor.
 (set-mouse-color "black")
