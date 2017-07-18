@@ -10,7 +10,6 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-blinks 0)
  '(company-idle-delay 0.2)
- '(custom-enabled-themes (quote (smart-mode-line-light)))
  '(custom-safe-themes
    (quote
     ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
@@ -193,7 +192,10 @@
   (setq dashboard-items '((recents  . 10)
                           (projects . 10)
                           (agenda . 5)))
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  :init
+  (require 'dashboard)
+  (dashboard-insert-startupify-lists))
 
 ;; Which-key - spacemacs' nice little prefix popup
 (use-package which-key
@@ -229,19 +231,27 @@
 (which-key-mode)
 
 ;; ## Misc. Customization
+(defun my-fix-cursor ()
+  "Fix the mouse cursor, in case it's gone invisible."
+  (interactive)
+  (setq x-pointer-shape x-pointer-xterm) ;; I-beam - makes the most sense for an editor.
+  (set-mouse-color "black"))
+(my-fix-cursor)
 ;; Keybindings
 (global-set-key (kbd "C-M-z") 'scroll-other-window-down) ;; Nice command from uemacs
 (when (string-equal system-type "windows-nt") ;; ergoemacs.org
   (global-set-key (kbd "<apps>") 'execute-extended-command))
+(global-set-key (kbd "M-n m") 'my-fix-cursor)
 
 ;; Rice
 (setq-default cursor-type 'bar)
-(setq x-pointer-shape x-pointer-xterm) ;; I-beam - makes the most sense for an editor.
-(set-mouse-color "black")
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
-(setq initial-buffer-choice '(lambda () (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
+(setq initial-buffer-choice '(lambda ()
+                               (require 'dashboard)
+                               (dashboard-insert-startupify-lists) ;; Make sure the dashboard is updated
+                               (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
 ;; Color theme incantation.
 (load-theme 'whiteboard t) ;; sometimes the theme gets overriden - workaround
