@@ -247,6 +247,7 @@
 
 ;; Rice
 (setq-default cursor-type 'bar)
+(blink-cursor-mode 1)
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
