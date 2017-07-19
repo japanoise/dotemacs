@@ -202,6 +202,7 @@
 (when (string-equal system-type "windows-nt") ;; ergoemacs.org
   (global-set-key (kbd "<apps>") 'execute-extended-command))
 (global-set-key (kbd "M-n m") 'my-fix-cursor)
+(global-set-key [S-mouse-2] 'browse-url-at-mouse)
 
 ;; Rice
 (setq-default cursor-type 'bar)
@@ -249,6 +250,18 @@
 (load-theme 'xemacs t t)
 (enable-theme 'xemacs)
 (set-cursor-color "red")
+
+;; http://pages.sachachua.com/.emacs.d/Sacha.html
+;; Save lots of history
+(setq savehist-file "~/.emacs.d/savehist")
+(savehist-mode 1)
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
 
 ;; ## Custom-set
 (add-to-list 'load-path "~/.emacs.d/chameleon")
