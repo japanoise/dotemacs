@@ -67,7 +67,8 @@
            "go build -v && go test -v && go vet"))
   ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-*") 'pop-tag-mark))
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  (set (make-local-variable 'company-backends) '(company-go)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;; Web mode
