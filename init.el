@@ -26,8 +26,7 @@
 (use-package highlight-chars
   :init (add-hook 'prog-mode-hook 'hc-highlight-trailing-whitespace))
 (use-package org-bullets)
-(use-package color-theme)
-(color-theme-initialize)
+(use-package color-theme-modern)
 (use-package smart-tabs-mode)
 (use-package whitespace-cleanup-mode) ;; Since my .vimrc used to do the same thing
 (use-package delight) ;; Shorten some minor modes
@@ -220,10 +219,6 @@
                                (dashboard-insert-startupify-lists) ;; Make sure the dashboard is updated
                                (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
-;; Color theme incantation.
-(load-theme 'tango t) ;; sometimes the theme gets overriden - workaround
-(setq color-theme-is-global t)
-(color-theme-xemacs)
 
 ;; Remove visual clutter
 (scroll-bar-mode 0)
@@ -253,6 +248,12 @@
   (define-fringe-bitmap 'tilde [0 0 0 113 219 142 0 0] nil nil 'center)
   (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
 (set-fringe-bitmap-face 'tilde 'font-lock-comment-face)
+
+;; Color theme incantation.
+(setq inhibit-x-resources t) ;; Never load settings from .Xresources
+(load-theme 'xemacs t t)
+(enable-theme 'xemacs)
+(set-cursor-color "red")
 
 (provide 'init)
 ;;; init.el ends here
