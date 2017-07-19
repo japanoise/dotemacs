@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Just another Emacs hacker,
 ;;; Code:
-;; ## Custom-set
-(add-to-list 'load-path "~/.emacs.d/chameleon")
-(require 'chameleon-custom) ;; Boot this to another file. Please ignore the flycheck error.
 
 ;; ## Set up package lists & use-package
 (require 'package)
@@ -30,8 +27,6 @@
 (use-package smart-tabs-mode)
 (use-package whitespace-cleanup-mode) ;; Since my .vimrc used to do the same thing
 (use-package delight) ;; Shorten some minor modes
-(use-package smart-mode-line) ;; Make the modeline suck less
-(sml/setup)
 
 ;; Smartparens
 (use-package smartparens
@@ -254,6 +249,12 @@
 (load-theme 'xemacs t t)
 (enable-theme 'xemacs)
 (set-cursor-color "red")
+
+;; ## Custom-set
+(add-to-list 'load-path "~/.emacs.d/chameleon")
+(require 'chameleon-custom) ;; Boot this to another file. Please ignore the flycheck error.
+(use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customize
+(sml/setup)
 
 (provide 'init)
 ;;; init.el ends here
