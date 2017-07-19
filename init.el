@@ -77,7 +77,7 @@
 (use-package smartparens
   :diminish smartparens-mode
   :bind (("C-M-f" . sp-forward-sexp)
-  ("C-M-b" . sp-backward-sexp)))
+         ("C-M-b" . sp-backward-sexp)))
 (require 'smartparens-config)
 
 ;; Flycheck
@@ -101,6 +101,7 @@
   :bind(("C-c C-r" . go-remove-unused-imports)))
 (use-package company-go)
 (defun my-go-mode-hook ()
+  "Hook for go mode.  Use goimports, godef, setup compile command."
   ; Use goimports instead of go-fmt
   (setq gofmt-command "goimports")
   ; Call Gofmt before saving
@@ -119,9 +120,11 @@
   :mode ("\\.html?\\'" . web-mode))
 ;; Smartparens for web-mode
 (defun my-web-mode-hook ()
+  "Hook for web-mode with smartparens."
   (setq web-mode-enable-auto-pairing nil))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (defun sp-web-mode-is-code-context (id action context)
+  "Determines whether we're in code context in web-mode.  Takes args ID ACTION CONTEXT."
   (and (eq action 'insert)
        (not (or (get-text-property (point) 'part-side)
                 (get-text-property (point) 'block-side)))))
