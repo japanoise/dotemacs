@@ -70,6 +70,9 @@
   (local-set-key (kbd "M-*") 'pop-tag-mark)
   (set (make-local-variable 'company-backends) '(company-go)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+(use-package go-eldoc
+  :init
+  (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 ;; Web mode
 (use-package web-mode
