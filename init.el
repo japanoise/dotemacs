@@ -18,7 +18,10 @@
 ;; ## My prefix - bound to <f5> by default
 (progn
   (define-prefix-command 'chameleon-prefix-map)
-  (define-key chameleon-prefix-map (kbd "r") 'replace-string))
+  (define-key chameleon-prefix-map (kbd "s") 'replace-string)
+  (define-key chameleon-prefix-map (kbd "r") 'replace-regexp)
+  (define-key chameleon-prefix-map (kbd "q r") 'query-replace-regexp)
+  (define-key chameleon-prefix-map (kbd "q s") 'query-replace))
 (global-set-key (kbd "<f5>") 'chameleon-prefix-map)
 
 ;; ## Enable packages
@@ -253,9 +256,7 @@
 
 ;; Color theme incantation.
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
-(load-theme 'xemacs t t)
-(enable-theme 'xemacs)
-(set-cursor-color "red")
+(load-theme 'xemacs t)
 
 ;; http://pages.sachachua.com/.emacs.d/Sacha.html
 ;; Save lots of history
