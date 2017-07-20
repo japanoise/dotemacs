@@ -15,6 +15,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; ## My prefix - bound to <f5> by default
+(progn
+  (define-prefix-command 'chameleon-prefix-map)
+  (define-key chameleon-prefix-map (kbd "r") 'replace-string))
+(global-set-key (kbd "<f5>") 'chameleon-prefix-map)
+
 ;; ## Enable packages
 (eval-when-compile ;; Make use-package auto-install everything
   (require 'use-package)
@@ -102,7 +108,8 @@
 
 ;; Magit, with some bindings
 (use-package magit
-  :bind(("M-n g s" . magit-status)))
+  :bind(:map chameleon-prefix-map
+        ("g s" . magit-status)))
 (use-package diff-hl)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
@@ -166,9 +173,11 @@
 
 ;; Neotree
 (use-package neotree
-  :bind(("M-n t s" . neotree)
-        ("M-n t t" . neotree-toggle)
-        ("M-n t p" . neotree-projectile-action))
+  :bind(
+        :map chameleon-prefix-map
+        ("t s" . neotree)
+        ("t t" . neotree-toggle)
+        ("t p" . neotree-projectile-action))
   :init (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action))
 
@@ -194,18 +203,11 @@
 (which-key-mode)
 
 ;; ## Misc. Customization
-(defun my-fix-cursor ()
-  "Fix the mouse cursor, in case it's gone invisible."
-  (interactive)
-  (setq x-pointer-shape x-pointer-xterm) ;; I-beam - makes the most sense for an editor.
-  (set-mouse-color "black"))
-(my-fix-cursor)
 ;; Keybindings
 (global-set-key (kbd "C-z") 'scroll-down-command)
 (global-set-key (kbd "C-M-z") 'scroll-other-window-down) ;; Nice command from uemacs
 (when (string-equal system-type "windows-nt") ;; ergoemacs.org
   (global-set-key (kbd "<apps>") 'execute-extended-command))
-(global-set-key (kbd "M-n m") 'my-fix-cursor)
 (global-set-key [S-mouse-2] 'browse-url-at-mouse)
 
 ;; Rice
