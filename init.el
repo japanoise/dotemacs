@@ -175,14 +175,17 @@
   :diminish which-key-mode)
 
 ;; Neotree
+(use-package all-the-icons)
 (use-package neotree
   :bind(
+        ([f8] . neotree-toggle)
         :map chameleon-prefix-map
         ("t s" . neotree)
         ("t t" . neotree-toggle)
         ("t p" . neotree-projectile-action))
   :init (setq neo-smart-open t)
-  (setq projectile-switch-project-action 'neotree-projectile-action))
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
