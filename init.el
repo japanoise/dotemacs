@@ -215,6 +215,12 @@
 (when (string-equal system-type "windows-nt") ;; ergoemacs.org
   (global-set-key (kbd "<apps>") 'execute-extended-command))
 (global-set-key [S-mouse-2] 'browse-url-at-mouse)
+;; Use f6 as uarg, free up C-u for kill line backwards.
+(global-set-key [f6] 'universal-argument)
+(define-key universal-argument-map [f6] 'universal-argument-more)
+(define-key universal-argument-map "\C-u" nil)
+(defun kill-line-backwards () "Kill line backwards." (interactive) (kill-line 0))
+(global-set-key (kbd "C-u") 'kill-line-backwards)
 
 ;; Rice
 (setq-default cursor-type 'bar)
