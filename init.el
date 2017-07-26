@@ -139,10 +139,16 @@
     (require 'helm-config)
     (helm-mode 1))
   :bind(("M-x" . helm-M-x) ;; Please use helm everywhere xoxoxo
-       ("C-x b" . helm-buffers-list)
+       ("C-x b" . helm-mini)
        ("C-x C-b" . helm-buffers-list)
-       ("C-x C-f" . helm-find-files))
+       ("C-x C-f" . helm-find-files)
+       ("M-y" . helm-show-kill-ring)
+       :map helm-map
+       ("<tab>" . helm-execute-persistent-action)
+       ("C-i" . helm-execute-persistent-action)
+       ("C-z" . helm-select-action))
   :config
+  (setq helm-split-window-in-side-p t) ;; Always popup at the bottom, don't take over other window
   (require 'helm-files)
   (define-key helm-find-files-map ;; I mean it. Use helm *everywhere*
     (kbd "C-x 4 C-f")
