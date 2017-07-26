@@ -36,6 +36,7 @@
 (use-package smart-tabs-mode)
 (use-package whitespace-cleanup-mode) ;; Since my .vimrc used to do the same thing
 (use-package delight) ;; Shorten some minor modes
+(use-package emojify) ;; :joy: :ok_hand:
 
 ;; Smartparens
 (use-package smartparens
@@ -221,6 +222,15 @@
 (define-key universal-argument-map "\C-u" nil)
 (defun kill-line-backwards () "Kill line backwards." (interactive) (kill-line 0))
 (global-set-key (kbd "C-u") 'kill-line-backwards)
+;; Nice commands from sandy
+(global-set-key (kbd "<S-home>") 'beginning-of-buffer)
+(global-set-key (kbd "<S-end>") 'end-of-buffer)
+(defun filter-replace-region ()
+  "Filter the region through a shell command, replacing it."
+  (interactive)
+  (let ((current-prefix-arg '(0)))
+    (call-interactively #'shell-command-on-region)))
+(global-set-key (kbd "C-\\") 'filter-replace-region)
 
 ;; Rice
 (setq-default cursor-type 'bar)
