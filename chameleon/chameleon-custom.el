@@ -32,7 +32,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (emojify all-the-icons go-eldoc monokai-theme diff-hl helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines whitespace-cleanup-mode org-bullets helm)))
+    (memoize all-the-icons emojify monokai-theme diff-hl helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines whitespace-cleanup-mode org-bullets helm)))
  '(projectile-mode t nil (projectile))
  '(recentf-mode t)
  '(scroll-bar-mode nil)

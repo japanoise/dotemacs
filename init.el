@@ -192,7 +192,8 @@
         ("t p" . neotree-projectile-action))
   :init (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action)
-  (setq neo-theme 'icons))
+  (if (package-installed-p 'all-the-icons)
+      (setq neo-theme 'icons) (setq neo-theme 'classic)))
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
