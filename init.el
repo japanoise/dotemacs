@@ -3,6 +3,12 @@
 ;;; Just another Emacs hacker,
 ;;; Code:
 
+;; ## Local setup
+(defvar my/no-icons 'nil "Don't use all-the-icons.")
+(if (file-exists-p "~/.emacs.d/chameleon-local.el")
+    (load-file "~/.emacs.d/chameleon-local.el")
+  '())
+
 ;; ## Set up package lists & use-package
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -182,7 +188,7 @@
   :diminish which-key-mode)
 
 ;; Neotree
-(use-package all-the-icons)
+(if (not my/no-icons) (use-package all-the-icons) '())
 (use-package neotree
   :bind(
         ([f8] . neotree-toggle)
@@ -192,7 +198,7 @@
         ("t p" . neotree-projectile-action))
   :init (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action)
-  (if (package-installed-p 'all-the-icons)
+  (if (and (package-installed-p 'all-the-icons) (not my/no-icons))
       (setq neo-theme 'icons) (setq neo-theme 'classic)))
 
 ;; ## Major mode hooks
@@ -296,6 +302,10 @@
         search-ring
         regexp-search-ring))
 
+;; Enabled commands
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 ;; ## Custom-set
 (add-to-list 'load-path "~/.emacs.d/chameleon")
 (require 'chameleon-custom) ;; Boot this to another file. Please ignore the flycheck error.
@@ -304,4 +314,3 @@
 
 (provide 'init)
 ;;; init.el ends here
-(put 'downcase-region 'disabled nil)
