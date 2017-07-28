@@ -44,6 +44,10 @@
 (use-package delight) ;; Shorten some minor modes
 (use-package emojify) ;; :joy: :ok_hand:
 
+;; Rainbow Delimiters
+(use-package rainbow-delimiters
+  :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
 ;; Smartparens
 (use-package smartparens
   :diminish smartparens-mode
@@ -256,6 +260,8 @@
                                (dashboard-insert-startupify-lists) ;; Make sure the dashboard is updated
                                (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
+(setq mouse-yank-at-point t) ;; Oh my god yes
+(add-hook 'tty-setup-hook (lambda () (xterm-mouse-mode)))
 
 ;; Remove visual clutter
 (scroll-bar-mode 0)
