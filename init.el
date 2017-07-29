@@ -23,6 +23,7 @@
 
 ;; ## My prefix - bound to <f5> by default
 (progn
+  (defvar chameleon-prefix-map)
   (define-prefix-command 'chameleon-prefix-map)
   (define-key chameleon-prefix-map (kbd "s") 'replace-string)
   (define-key chameleon-prefix-map (kbd "r") 'replace-regexp)
@@ -298,6 +299,7 @@
 
 ;; http://pages.sachachua.com/.emacs.d/Sacha.html
 ;; Save lots of history
+(require 'savehist)
 (setq savehist-file "~/.emacs.d/savehist")
 (savehist-mode 1)
 (setq history-length t)
@@ -313,8 +315,7 @@
 (put 'upcase-region 'disabled nil)
 
 ;; ## Custom-set
-(add-to-list 'load-path "~/.emacs.d/chameleon")
-(require 'chameleon-custom) ;; Boot this to another file. Please ignore the flycheck error.
+(load-file "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
 (use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customize
 (sml/setup)
 
