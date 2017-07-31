@@ -72,6 +72,7 @@
 ;; - github.com/godoctor/godoctor
 ;; - golang.org/x/tools/cmd/goimports
 ;; - github.com/rogpeppe/godef
+;; - golang.org/x/tools/cmd/gorename
 (use-package go-mode
   :config (use-package godoctor)
   :bind(("C-c C-r" . go-remove-unused-imports)))
@@ -94,6 +95,7 @@
 (use-package go-eldoc
   :init
   (add-hook 'go-mode-hook 'go-eldoc-setup))
+(use-package go-rename)
 
 ;; Web mode
 (use-package web-mode
@@ -229,6 +231,8 @@
 
 ;; ## Misc. Customization
 ;; Keybindings
+(global-set-key (kbd "M-]") 'flycheck-next-error)
+(global-set-key (kbd "M-[") 'flycheck-previous-error)
 (global-set-key (kbd "C-z") 'scroll-down-command)
 (global-set-key (kbd "C-M-z") 'scroll-other-window-down) ;; Nice command from uemacs
 (global-set-key (if (string-equal system-type "windows-nt") (kbd "<apps>") (kbd "<menu>")) 'helm-M-x)
