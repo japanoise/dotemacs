@@ -231,8 +231,7 @@
 ;; Keybindings
 (global-set-key (kbd "C-z") 'scroll-down-command)
 (global-set-key (kbd "C-M-z") 'scroll-other-window-down) ;; Nice command from uemacs
-(when (string-equal system-type "windows-nt") ;; ergoemacs.org
-  (global-set-key (kbd "<apps>") 'execute-extended-command))
+(global-set-key (if (string-equal system-type "windows-nt") (kbd "<apps>") (kbd "<menu>")) 'helm-M-x)
 (global-set-key [S-mouse-2] 'browse-url-at-mouse)
 ;; Use f6 as uarg, free up C-u for kill line backwards.
 (global-set-key [f6] 'universal-argument)
