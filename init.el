@@ -56,10 +56,12 @@
          ("C-M-b" . sp-backward-sexp)))
 (require 'smartparens-config)
 
-;; Flycheck
+;; Flycheck and Flyspell
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
 
 ;; Company
 (use-package company
