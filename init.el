@@ -298,9 +298,20 @@
   (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
 (set-fringe-bitmap-face 'tilde 'font-lock-comment-face)
 
-;; Color theme incantation.
+;; Color themes; switch between light and dark theme easily
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
-(load-theme 'xemacs t)
+(load-file "~/.emacs.d/chameleon/xemacs-chameleon-theme.el")
+(load-theme 'xemacs-chameleon t)
+(require 'dash)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-farmhouse-theme")
+(add-to-list 'load-path "~/.emacs.d/vendor/emacs-farmhouse-theme")
+(defvar chameleon/themes '(farmhouse-dark xemacs-chameleon) "Themes to rotate through.")
+(defun chameleon/rotate-themes () "Switch to the next theme in chameleon/themes."
+       (interactive)
+       (load-theme (car chameleon/themes) t)
+       (setq chameleon/themes (-rotate (- (length chameleon/themes) 1) chameleon/themes))
+       (redraw-display))
+(global-set-key (kbd "C-c C-t") 'chameleon/rotate-themes)
 
 ;; http://pages.sachachua.com/.emacs.d/Sacha.html
 ;; Save lots of history
@@ -321,7 +332,7 @@
 
 ;; ## Custom-set
 (load-file "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
-(use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customize
+(use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customise
 (sml/setup)
 
 (provide 'init)
