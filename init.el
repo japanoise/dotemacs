@@ -301,14 +301,18 @@
 ;; Color themes; switch between light and dark theme easily
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
 (load-file "~/.emacs.d/chameleon/xemacs-chameleon-theme.el")
+(use-package spacemacs-theme)
 (load-theme 'xemacs-chameleon t)
 (require 'dash)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-farmhouse-theme")
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-farmhouse-theme")
-(defvar chameleon/themes '(farmhouse-dark xemacs-chameleon) "Themes to rotate through.")
+(defvar chameleon/themes '(farmhouse-dark spacemacs-dark xemacs-chameleon) "Themes to rotate through.")
+(defvar chameleon/current-theme 'xemacs-chameleon "The currently enabled theme.")
 (defun chameleon/rotate-themes () "Switch to the next theme in chameleon/themes."
        (interactive)
+       (disable-theme chameleon/current-theme)
        (load-theme (car chameleon/themes) t)
+       (setq chameleon/current-theme (car chameleon/themes))
        (setq chameleon/themes (-rotate (- (length chameleon/themes) 1) chameleon/themes))
        (redraw-display))
 (global-set-key (kbd "C-c C-t") 'chameleon/rotate-themes)
@@ -333,6 +337,7 @@
 ;; ## Custom-set
 (load-file "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
 (use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customise
+(setq sml/theme 'respectful)
 (sml/setup)
 
 (provide 'init)
