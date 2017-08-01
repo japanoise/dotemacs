@@ -9,17 +9,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(async-bytecomp-package-mode t)
  '(battery-mode-line-format " %p" t)
  '(blink-cursor-blinks 0)
  '(blink-cursor-mode t)
  '(column-number-mode t)
  '(company-idle-delay 0.2)
- '(custom-safe-themes
-   (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "cdd26fa6a8c6706c9009db659d2dffd7f4b0350f9cc94e5df657fa295fffec71" "e8825f26af32403c5ad8bc983f8610a4a4786eb55e3a363fa9acb48e0677fe7e" "432c18be21dc506512cb44bf93ab7d10741ad64c979da53299df03c1a0478769" "3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecfb30f9d1748ab722d4b7d25d28c130d774146cc5aec3fd7cbe0827cfdcd6a9" "72c530c9c8f3561b5ab3bf5cda948cd917de23f48d9825b7a781fe1c0d737f2f" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+ '(custom-safe-themes t)
+ '(darkokai-high-contrast-mode-line t)
  '(erc-track-position-in-mode-line t t)
  '(frame-resize-pixelwise t)
  '(global-company-mode t)
@@ -34,7 +31,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (spacemacs-theme go-rename rainbow-delimiters memoize all-the-icons emojify monokai-theme diff-hl helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines whitespace-cleanup-mode org-bullets helm)))
+    (rainbow-mode darkokai-theme monokai spacemacs-theme go-rename rainbow-delimiters memoize all-the-icons emojify monokai-theme diff-hl helm-projectile neotree markdown-mode smartparens smartparens-config web-mode smart-tabs-mode smart-tabs highlight-chars flycheck which-key undo-tree delight projectile dashboard page-break-lines whitespace-cleanup-mode org-bullets helm)))
  '(projectile-mode t nil (projectile))
  '(recentf-mode t)
  '(scroll-bar-mode nil)
@@ -59,7 +56,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(minibuffer-prompt ((t (:inherit default)))))
+ )
+(custom-theme-set-faces
+ 'darkokai
+ '(font-lock-comment-face ((t (:foreground "#1cf" :background "#242736"))))
+ '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
+ '(mode-line ((t (:box (:line-width 1 :color "grey" :style released-button)))))
+ '(mode-line-inactive ((t (:box (:line-width 1 :color "black" :style released-button))))))
 
 (provide 'chameleon-custom)
 ;;; chameleon-custom.el ends here

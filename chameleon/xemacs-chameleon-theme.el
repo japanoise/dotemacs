@@ -73,7 +73,7 @@
  '(dired-face-symlink ((t (:foreground "cyan"))))
  '(font-lock-builtin-face ((t (:foreground "red3"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "blue4"))))
- '(font-lock-comment-face ((t (:foreground "blue4"))))
+ '(font-lock-comment-face ((t (:foreground "blue4" :background "grey80"))))
  '(font-lock-constant-face ((t (:foreground "red3"))))
  '(font-lock-doc-string-face ((t (:foreground "green4"))))
  '(font-lock-doc-face ((t (:foreground "medium violet red"))))

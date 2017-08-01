@@ -216,6 +216,7 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq indent-tabs-mode nil)))
 
 ;; ## Minor Modes
+(require 'paren)
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
@@ -256,6 +257,7 @@
 (global-set-key (kbd "C-\\") 'filter-replace-region)
 
 ;; Rice
+(add-to-list 'default-frame-alist '(font . "Go Mono 10"))
 (setq-default cursor-type 'bar)
 (blink-cursor-mode 1)
 (setq frame-title-format "%b - emacs")
@@ -300,22 +302,29 @@
 
 ;; Color themes; switch between light and dark theme easily
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
+
 (load-file "~/.emacs.d/chameleon/xemacs-chameleon-theme.el")
-(use-package spacemacs-theme)
-(defvar chameleon/themes '(farmhouse-dark spacemacs-dark xemacs-chameleon) "Themes to rotate through.")
+(use-package darkokai-theme
+  :init (setq darkokai-mode-line-padding 1))
+(defvar chameleon/themes '(darkokai xemacs-chameleon) "Themes to rotate through.")
 (mapc (lambda (theme) (load-theme theme t t)) chameleon/themes)
-(load-theme 'xemacs-chameleon t)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-farmhouse-theme")
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-farmhouse-theme")
 (defun chameleon/rotate-themes () "Switch to the next theme in chameleon/themes."
        (interactive)
        (require 'dash)
-       (mapc 'disable-theme custom-enabled-themes)
+       (mapc (lambda (theme)
+               (when (member theme chameleon/themes)
+                 (disable-theme theme)))
+             custom-enabled-themes)
        (smart-mode-line-enable)
        (enable-theme (car chameleon/themes))
        (setq chameleon/themes (-rotate (- (length chameleon/themes) 1) chameleon/themes))
        (redraw-display))
 (global-set-key (kbd "C-c C-t") 'chameleon/rotate-themes)
+
+;; HACK: darkokai enables itself, but in such a way that we can't see it.
+;; Enable it explicitly, then disable it again.
+(enable-theme 'darkokai)
+(disable-theme 'darkokai)
 
 ;; http://pages.sachachua.com/.emacs.d/Sacha.html
 ;; Save lots of history
@@ -336,6 +345,7 @@
 
 ;; ## Custom-set
 (load-file "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
+(enable-theme 'xemacs-chameleon)
 (use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customise
 (setq sml/theme 'respectful)
 (sml/setup)
