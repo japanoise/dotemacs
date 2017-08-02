@@ -42,7 +42,8 @@
 
 ;; Magit, with some bindings
 (use-package magit
-  :bind(:map chameleon-prefix-map
+  :bind(("C-x g" . magit-status) ;; thanks wikemacs
+        :map chameleon-prefix-map
         ("g s" . magit-status)))
 (use-package diff-hl)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
