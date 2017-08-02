@@ -44,11 +44,11 @@
  '(when
       (or
        (not
-        (boundp
-         (quote ansi-term-color-vector)))
+	(boundp
+	 (quote ansi-term-color-vector)))
        (not
-        (facep
-         (aref ansi-term-color-vector 0)))))
+	(facep
+	 (aref ansi-term-color-vector 0)))))
  '(which-key-echo-keystrokes 0.1)
  '(which-key-mode t))
 (custom-set-faces
@@ -57,12 +57,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(custom-theme-set-faces
- 'darkokai
- '(font-lock-comment-face ((t (:foreground "#1cf" :background "#242736"))))
- '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
- '(mode-line ((t (:box (:line-width 1 :color "grey" :style released-button)))))
- '(mode-line-inactive ((t (:box (:line-width 1 :color "black" :style released-button))))))
+
+(when (custom-theme-p 'darkokai)
+  (custom-theme-set-faces
+   'darkokai
+   '(mode-line-inactive ((t(:box (:line-width 1 :color "grey50" :style released-button)))))))
 
 (provide 'chameleon-custom)
 ;;; chameleon-custom.el ends here
