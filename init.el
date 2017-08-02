@@ -67,11 +67,11 @@
 
 (unless my/local-theme
   (load-file "~/.emacs.d/chameleon/xemacs-chameleon-theme.el")
-  (use-package darkokai-theme
-    :init (setq darkokai-mode-line-padding 1)
-    (setq darkokai-high-contrast-mode-line t))
-  (defvar chameleon/themes '(darkokai xemacs-chameleon) "Themes to rotate through.")
-  (mapc (lambda (theme) (load-theme theme t t)) chameleon/themes)
+  (use-package doom-themes :config
+    (setq doom-vibrant-brighter-comments t)
+    (setq doom-vibrant-brighter-modeline t)
+    (setq doom-vibrant-comment-bg t))
+  (defvar chameleon/themes '(doom-vibrant xemacs-chameleon) "Themes to rotate through.")
   (defun chameleon/rotate-themes () "Switch to the next theme in chameleon/themes."
          (interactive)
          (require 'dash)
@@ -80,7 +80,7 @@
                    (disable-theme theme)))
                custom-enabled-themes)
          (smart-mode-line-enable)
-         (enable-theme (car chameleon/themes))
+         (load-theme (car chameleon/themes) t)
          (setq chameleon/themes (-rotate (- (length chameleon/themes) 1) chameleon/themes))
          (redraw-display))
   (global-set-key (kbd "C-c C-t") 'chameleon/rotate-themes))
