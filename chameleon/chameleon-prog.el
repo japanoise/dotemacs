@@ -49,7 +49,8 @@
 (use-package go-eldoc
   :init
   (add-hook 'go-mode-hook 'go-eldoc-setup))
-(use-package go-rename)
+(use-package go-rename
+  :bind (("<S-f6>" . go-rename)))
 
 ;; Web mode
 (use-package web-mode

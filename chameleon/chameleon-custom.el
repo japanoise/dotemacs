@@ -85,11 +85,11 @@
  '(when
       (or
        (not
-        (boundp
-         (quote ansi-term-color-vector)))
+	(boundp
+	 (quote ansi-term-color-vector)))
        (not
-        (facep
-         (aref ansi-term-color-vector 0)))))
+	(facep
+	 (aref ansi-term-color-vector 0)))))
  '(which-key-echo-keystrokes 0.1)
  '(which-key-mode t))
 (custom-set-faces
