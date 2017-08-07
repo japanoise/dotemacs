@@ -53,8 +53,7 @@
  '(recentf-mode t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(sml/mode-width (quote full))
- '(sml/name-width 50)
+ '(sml/mode-width (quote right))
  '(sml/no-confirm-load-theme t)
  '(sml/pos-minor-modes-separator "")
  '(tool-bar-mode nil)
@@ -85,11 +84,11 @@
  '(when
       (or
        (not
-	(boundp
-	 (quote ansi-term-color-vector)))
+        (boundp
+         (quote ansi-term-color-vector)))
        (not
-	(facep
-	 (aref ansi-term-color-vector 0)))))
+        (facep
+         (aref ansi-term-color-vector 0)))))
  '(which-key-echo-keystrokes 0.1)
  '(which-key-mode t))
 (custom-set-faces
