@@ -44,6 +44,9 @@
   ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
+  ;; More known behaviour from IntelliJ IDEA
+  (local-set-key (kbd "<C-down-mouse-1>") 'mouse-set-point)
+  (local-set-key (kbd "<C-mouse-1>") 'godef-jump)
   (set (make-local-variable 'company-backends) '(company-go)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (use-package go-eldoc
