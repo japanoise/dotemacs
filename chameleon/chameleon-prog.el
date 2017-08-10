@@ -21,12 +21,24 @@
 
 ;;; Code:
 
+(defun buffer-mode (&optional buffer-or-name)
+  "Return the major mode associated with a buffer.  If BUFFER-OR-NAME is nil return current buffer's mode."
+  (buffer-local-value 'major-mode
+                      (if buffer-or-name
+                          (get-buffer buffer-or-name)
+                        (current-buffer))))
+
 ;; Elisp
 (use-package srefactor)
 (require 'srefactor-lisp)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (add-hook 'before-save-hook 'srefactor-lisp-format-buffer)
+            (add-hook 'before-save-hook
+                      (lambda ()
+                        (when (eq (buffer-mode) 'emacs-lisp-mode)
+                          (srefactor-lisp-format-buffer)))
+                      nil
+                      'local)
             (setq indent-tabs-mode nil)))
 
 ;; Go mode. Dependencies:
