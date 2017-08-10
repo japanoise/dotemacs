@@ -79,5 +79,14 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+;; Haskell mode.
+(use-package haskell-mode)
+(add-hook 'haskell-mode-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 (append '((company-capf company-dabbrev-code))
+                         company-backends))))
+(setq haskell-completions-complete-operators nil)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
