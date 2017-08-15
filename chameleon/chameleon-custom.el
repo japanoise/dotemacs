@@ -41,8 +41,16 @@
                                  ("#F309DF" . 85)
                                  ("#424748" . 100))))
  '(inhibit-startup-screen t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#1c1f24" "#51afef"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1c1f24" "#7bc275"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1c1f24" "#484854"))
  '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
+ '(org-agenda-files (quote ("~/repos/todo/todo.org")))
+ '(org-ellipsis "  ")
+ '(org-fontify-done-headline t)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-fontify-whole-heading-line t)
  '(package-selected-packages (quote (srefactor fghsahusehue haskell-mode doom-themes
                                                rainbow-mode go-rename rainbow-delimiters
                                                memoize all-the-icons emojify monokai-theme
