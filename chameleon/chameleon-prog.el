@@ -118,5 +118,8 @@
 (setq haskell-completions-complete-operators
       nil)
 
+;; Dockerfile mode
+(use-package dockerfile-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here

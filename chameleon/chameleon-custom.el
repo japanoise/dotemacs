@@ -51,14 +51,14 @@
  '(org-fontify-done-headline t)
  '(org-fontify-quote-and-verse-blocks t)
  '(org-fontify-whole-heading-line t)
- '(package-selected-packages (quote (srefactor fghsahusehue haskell-mode doom-themes
-                                               rainbow-mode go-rename rainbow-delimiters
-                                               memoize all-the-icons emojify monokai-theme
-                                               diff-hl helm-projectile neotree markdown-mode
-                                               smartparens smartparens-config web-mode smart-tabs-mode
-                                               smart-tabs highlight-chars flycheck which-key
-                                               undo-tree delight projectile dashboard page-break-lines
-                                               whitespace-cleanup-mode org-bullets helm)))
+ '(package-selected-packages (quote (dockerfile-mode srefactor fghsahusehue haskell-mode
+                                                     doom-themes rainbow-mode go-rename rainbow-delimiters
+                                                     memoize all-the-icons emojify monokai-theme
+                                                     diff-hl helm-projectile neotree markdown-mode
+                                                     smartparens smartparens-config web-mode smart-tabs-mode
+                                                     smart-tabs highlight-chars flycheck which-key
+                                                     undo-tree delight projectile dashboard page-break-lines
+                                                     whitespace-cleanup-mode org-bullets helm)))
  '(pos-tip-background-color "#E6DB74")
  '(pos-tip-foreground-color "#242728")
  '(projectile-mode t
