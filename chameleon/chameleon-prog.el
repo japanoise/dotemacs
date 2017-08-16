@@ -28,6 +28,12 @@
                           (get-buffer buffer-or-name)
                         (current-buffer))))
 
+;; Generic-x; various random major modes
+;; Do it first so anything defined here can be overwritten by subsequent prog-modes
+(require 'generic-x)
+(add-to-list 'auto-mode-alist
+             '("\\.gitignore$" . hosts-generic-mode)) ;; Highlight comments for .gitignore files
+
 ;; Elisp
 (use-package srefactor)
 (require 'srefactor-lisp)
