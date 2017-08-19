@@ -46,7 +46,7 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#1c1f24" "#484854"))
  '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/repos/todo/todo.org")))
+ '(org-agenda-files nil)
  '(org-ellipsis "  ")
  '(org-fontify-done-headline t)
  '(org-fontify-quote-and-verse-blocks t)
