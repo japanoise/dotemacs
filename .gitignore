@@ -1,10 +1,11 @@
 auto-save-list/
 bookmarks
+chameleon/chameleon-custom.el
 chameleon-local.el
 elpa/
 emacs-backup/
-eshell/
 emojis/
+eshell/
 network-security.data
 projectile-bookmarks.eld
 recentf
