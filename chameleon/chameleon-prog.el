@@ -121,11 +121,25 @@
             (set (make-local-variable 'company-backends)
                  (append '((company-capf company-dabbrev-code))
                          company-backends))))
+(require 'haskell)
 (setq haskell-completions-complete-operators
       nil)
 
 ;; Dockerfile mode
 (use-package dockerfile-mode)
+
+;; SLIME
+(defvar my/path-to-sbcl (executable-find "sbcl")
+  "Path to SBCL executable.")
+(if my/path-to-sbcl
+    (progn
+      (use-package slime)
+      (require 'slime)
+      (require 'slime-autoloads)
+      (add-to-list 'slime-contribs 'slime-fancy)
+      (setq inferior-lisp-program my/path-to-sbcl)
+      (add-hook 'slime-repl-mode-hook #'smartparens-strict-mode))
+  (message "Unable to find SBCL in PATH; please install it if you want to hack on CL."))
 
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
