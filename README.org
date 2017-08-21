@@ -1,3 +1,45 @@
 * My .emacs.d
 
 Configuring emacs is far too much fun.
+
+** Bindings
+
+- <f5> prefix for funsies (mostly so I don't have to M-x for replace-string)
+- Some IntelliJ IDEA bindings
+- Some uemacs & sandy bindings
+- C-u for kill backwards like readline (<f6> is for u-arg)
+
+** Usability
+
+- Helm and Company everywhere
+- Neotree
+- Smart-mode-line
+- Which-key
+- Uses use-package rather than package-install + require insanity
+- Boot custom crap into a seperate file
+
+** Programming modes
+
+- Generic modes
+- Auto-formatting for Emacs Lisp
+- Smartparens everywhere
+- Go mode featuring enough to basically turn Emacs into a Go IDE
+- Web-mode with smartparens
+- Markdown mode
+- Haskell mode (I'll learn Haskell Real Soon Now™)
+- Dockerfile mode (for work)
+- SLIME (I'll learn Haskell<M-DEL>Common Lisp Real Soon Now™)
+
+** Eye-candy
+
+- Use Go Mono, God's own font
+- Blinking bar cursor like the patrician I am
+- Simple frame title
+- No bell
+- Spacemacs-style dashboard
+- No clutter (scrollbars, toolbar, menubar)
+- Sane scrolling
+- Vi-tildes
+- Switchable themes - doom-vibrant and my customised XEmacs theme
+- Disable .Xresources cruft
+- Org-bullets
