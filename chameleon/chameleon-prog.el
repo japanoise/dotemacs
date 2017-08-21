@@ -57,8 +57,9 @@
   :config (use-package godoctor):bind
   (("C-c C-r" . go-remove-unused-imports)))
 (use-package company-go)
+(use-package go-rename)
 (defun my-go-mode-hook ()
-  "Hook for go mode.  Use goimports, godef, setup compile command."
+  "Hook for go mode.  Use goimports, godef, gorename, and setup compile command."
   ;; Use goimports instead of go-fmt
   (setq gofmt-command "goimports")
   ;; Call Gofmt before saving
@@ -77,13 +78,13 @@
                  'mouse-set-point)
   (local-set-key (kbd "<C-mouse-1>")
                  'godef-jump)
+  (local-set-key (kbd "<S-f6>")
+                 'go-rename)
   (set (make-local-variable 'company-backends)
        '(company-go)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (use-package go-eldoc
   :init (add-hook 'go-mode-hook 'go-eldoc-setup))
-(use-package go-rename
-  :bind (("<S-f6>" . go-rename)))
 
 ;; Web mode
 (use-package web-mode
