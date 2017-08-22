@@ -109,13 +109,28 @@
 (put 'upcase-region 'disabled nil)
 
 ;; ## Custom-set
-(load-file "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
+(when (file-exists-p "~/.emacs.d/chameleon/chameleon-custom.el")
+  (load-file "~/.emacs.d/chameleon/chameleon-custom.el")) ;; Boot this to another file.
 (if my/local-theme
     (enable-theme my/local-theme)
   (enable-theme 'xemacs-chameleon))
 (use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customise
 (setq sml/theme 'respectful)
+(setq sml/no-confirm-load-theme t)
 (sml/setup)
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223"
+                              default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
