@@ -99,6 +99,7 @@
 
 ;; Which-key - spacemacs' nice little prefix popup
 (use-package which-key :diminish which-key-mode)
+(setq which-key-echo-keystrokes 0.1)
 
 ;; Neotree
 (if (not my/no-icons)

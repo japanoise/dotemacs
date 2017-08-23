@@ -21,6 +21,7 @@
 
 ;;; Code:
 
+(setq frame-resize-pixelwise t)
 (add-to-list 'default-frame-alist
              '(font . "Go Mono 10"))
 (setq-default cursor-type 'bar)
