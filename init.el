@@ -3,6 +3,12 @@
 ;;; Just another Emacs hacker,
 ;;; Code:
 
+;; ## Remove visual clutter
+;; Put this first so it definitely gets eval'd
+(scroll-bar-mode 0)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+
 ;; ## Set up package lists & use-package
 (require 'package)
 (setq package-enable-at-startup nil)

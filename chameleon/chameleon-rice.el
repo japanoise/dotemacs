@@ -21,7 +21,8 @@
 
 ;;; Code:
 
-(add-to-list 'default-frame-alist '(font . "Go Mono 10"))
+(add-to-list 'default-frame-alist
+             '(font . "Go Mono 10"))
 (setq-default cursor-type 'bar)
 (blink-cursor-mode 1)
 (setq frame-title-format "%b - emacs")
@@ -33,12 +34,9 @@
                                (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
 (setq mouse-yank-at-point t) ;; Oh my god yes
-(add-hook 'tty-setup-hook (lambda () (xterm-mouse-mode)))
-
-;; Remove visual clutter
-(scroll-bar-mode 0)
-(menu-bar-mode 0)
-(tool-bar-mode 0)
+(add-hook 'tty-setup-hook
+          (lambda ()
+            (xterm-mouse-mode)))
 
 ;; stuff from ergoemacs.org
 ;; backup in one place. flat, no tree structure
@@ -60,8 +58,13 @@
 ;; Emacs-y tilde fringe
 (setq-default indicate-empty-lines t)
 (progn
-  (define-fringe-bitmap 'tilde [0 0 0 113 219 142 0 0] nil nil 'center)
-  (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
+  (define-fringe-bitmap 'tilde
+    [0 0 0 113 219 142 0 0]
+    nil
+    nil
+    'center)
+  (setcdr (assq 'empty-line fringe-indicator-alist)
+          'tilde))
 (set-fringe-bitmap-face 'tilde 'font-lock-comment-face)
 
 (provide 'chameleon-rice)
