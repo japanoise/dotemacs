@@ -68,5 +68,8 @@
           'tilde))
 (set-fringe-bitmap-face 'tilde 'font-lock-comment-face)
 
+;; fundamental-mode is just about useless; default to text-mode
+(setq-default major-mode 'text-mode)
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
