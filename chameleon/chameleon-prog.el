@@ -142,5 +142,10 @@
       (add-hook 'slime-repl-mode-hook #'smartparens-strict-mode))
   (message "Unable to find SBCL in PATH; please install it if you want to hack on CL."))
 
+;; Clojure
+(use-package clojure-mode)
+(use-package cider)
+(use-package cljdoc)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
