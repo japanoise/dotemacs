@@ -71,5 +71,13 @@
 ;; fundamental-mode is just about useless; default to text-mode
 (setq-default major-mode 'text-mode)
 
+;; Dired tweaks - use dired+ and pass -h to ls
+(use-package dired+)
+(global-dired-hide-details-mode -1)
+(setq-default dired-listing-switches "-alh")
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (dired-hide-details-mode -1)))
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
