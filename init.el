@@ -98,7 +98,8 @@
                                     chameleon/themes))
     (redraw-display))
   (global-set-key (kbd "C-c C-t")
-                  'chameleon/rotate-themes))
+                  'chameleon/rotate-themes)
+  (define-key chameleon-prefix-map (kbd "t") 'chameleon/rotate-themes))
 
 ;; http://pages.sachachua.com/.emacs.d/Sacha.html
 ;; Save lots of history
