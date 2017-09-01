@@ -47,6 +47,7 @@
 
 (load-file "~/.emacs.d/chameleon/chameleon-packages.el")
 (load-file "~/.emacs.d/chameleon/chameleon-prog.el")
+(load-file "~/.emacs.d/chameleon/chameleon-net.el")
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook
