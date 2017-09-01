@@ -47,7 +47,6 @@
 
 (load-file "~/.emacs.d/chameleon/chameleon-packages.el")
 (load-file "~/.emacs.d/chameleon/chameleon-prog.el")
-(load-file "~/.emacs.d/chameleon/chameleon-net.el")
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook
@@ -129,6 +128,7 @@
 (setq sml/theme 'respectful)
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
+(load-file "~/.emacs.d/chameleon/chameleon-net.el") ;; uses a customized variable
 
 (provide 'init)
 ;;; init.el ends here

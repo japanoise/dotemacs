@@ -26,6 +26,16 @@
 (require 'erc)
 (setq erc-format-nick-function 'erc-format-@nick)
 (use-package erc-hl-nicks)
+(defcustom znc-pass nil "Password to use to connect to znc."
+  :type 'string
+  :group 'erc)
+(when znc-pass
+  (use-package znc
+    :config (setq znc-servers `(("www.seekrit.club" 1025
+                                 t
+                                 ((rizon "KonaKona/rizon" ,znc-pass)
+                                  (freenode "KonaKona/freenode" ,znc-pass)
+                                  (darenet "KonaKona/darenet" ,znc-pass)))))))
 
 ;; gopher
 (use-package gopher)
