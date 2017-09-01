@@ -27,9 +27,12 @@
 ;; ## Local setup
 (defvar my/no-icons 'nil "Don't use all-the-icons.")
 (defvar my/local-theme 'nil "Theme to use locally.")
-(if (file-exists-p "~/.emacs.d/chameleon-local.el")
-    (load-file "~/.emacs.d/chameleon-local.el")
-  '())
+(defun my/load-file-if-exists (file)
+  "If FILE exists, load it."
+  ()
+  (when (file-exists-p file)
+    (load-file file)))
+(my/load-file-if-exists "~/.emacs.d/chameleon-local.el")
 
 ;; ## My prefix - bound to <f5> by default
 (progn
@@ -117,8 +120,7 @@
 
 ;; ## Custom-set
 (setq custom-file "~/.emacs.d/chameleon/chameleon-custom.el")
-(when (file-exists-p "~/.emacs.d/chameleon/chameleon-custom.el")
-  (load-file "~/.emacs.d/chameleon/chameleon-custom.el")) ;; Boot this to another file.
+(my/load-file-if-exists "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
 (if my/local-theme
     (enable-theme my/local-theme)
   (enable-theme 'xemacs-chameleon))
