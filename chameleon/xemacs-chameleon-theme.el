@@ -67,6 +67,7 @@
                         '(dired-face-setuid ((t (:foreground "Red"))))
                         '(dired-face-socket ((t (:foreground "magenta"))))
                         '(dired-face-symlink ((t (:foreground "cyan"))))
+                        '(erc-timestamp-face ((t (:foreground "DarkGreen" :weight bold))))
                         '(font-lock-builtin-face ((t (:foreground "red3"))))
                         '(font-lock-comment-delimiter-face ((t (:foreground "blue4"))))
                         '(font-lock-comment-face ((t (:foreground "blue4" :background "grey80"))))
