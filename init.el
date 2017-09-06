@@ -24,29 +24,19 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(eval-when-compile (add-to-list 'load-path "~/.emacs.d/chameleon"))
+
+(require 'chameleon-variables)
+
 ;; ## Local setup
-(defvar my/no-icons 'nil "Don't use all-the-icons.")
-(defvar my/local-theme 'nil "Theme to use locally.")
-(defun my/load-file-if-exists (file)
-  "If FILE exists, load it."
-  ()
-  (when (file-exists-p file)
-    (load-file file)))
 (my/load-file-if-exists "~/.emacs.d/chameleon-local.el")
 
 ;; ## My prefix - bound to <f5> by default
-(progn
-  (defvar chameleon-prefix-map)
-  (define-prefix-command 'chameleon-prefix-map)
-  (define-key chameleon-prefix-map (kbd "s") 'replace-string)
-  (define-key chameleon-prefix-map (kbd "r") 'replace-regexp)
-  (define-key chameleon-prefix-map (kbd "q r") 'query-replace-regexp)
-  (define-key chameleon-prefix-map (kbd "q s") 'query-replace))
 (global-set-key (kbd "<f5>")
                 'chameleon-prefix-map)
 
-(load-file "~/.emacs.d/chameleon/chameleon-packages.el")
-(load-file "~/.emacs.d/chameleon/chameleon-prog.el")
+(require 'chameleon-packages)
+(require 'chameleon-prog)
 
 ;; ## Major mode hooks
 (add-hook 'org-mode-hook
@@ -73,8 +63,8 @@
 (which-key-mode)
 
 ;; ## Misc. Customization
-(load-file "~/.emacs.d/chameleon/chameleon-keys.el")
-(load-file "~/.emacs.d/chameleon/chameleon-rice.el")
+(require 'chameleon-keys)
+(require 'chameleon-rice)
 
 ;; Color themes; switch between light and dark theme easily
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
@@ -88,7 +78,7 @@
   (defun chameleon/rotate-themes ()
     "Switch to the next theme in chameleon/themes."
     (interactive)
-    (require 'dash)
+    (eval-and-compile (require 'dash))
     (mapc (lambda (theme)
             (when (member theme chameleon/themes)
               (disable-theme theme)))

@@ -3,6 +3,10 @@
 ;; Copyright (C) 2017
 ;;; Code:
 
+(eval-when-compile (add-to-list 'load-path "~/.emacs.d/chameleon"))
+
+(require 'chameleon-variables)
+
 ;; ## Enable packages
 (eval-when-compile (require 'use-package)
                    (setq use-package-always-ensure t)) ;; Make use-package auto-installs everything
