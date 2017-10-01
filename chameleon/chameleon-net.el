@@ -40,5 +40,9 @@
 ;; gopher
 (use-package gopher)
 
+;; tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
+
 (provide 'chameleon-net)
 ;;; chameleon-net.el ends here
