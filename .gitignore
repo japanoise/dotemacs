@@ -1,4 +1,5 @@
 auto-save-list/
+%backup%~
 bookmarks
 chameleon/chameleon-custom.el
 chameleon-local.el
