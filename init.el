@@ -68,6 +68,8 @@
 
 ;; Recfile mode - plaintext databases (https://www.gnu.org/software/recutils)
 (require 'rec-mode)
+(add-to-list 'auto-mode-alist
+             '("\\.rec\\'" . rec-mode))
 
 ;; Color themes; switch between light and dark theme easily
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
