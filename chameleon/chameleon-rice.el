@@ -21,7 +21,10 @@
 
 ;;; Code:
 
+;; Don't emulate xterm please
 (setq frame-resize-pixelwise t)
+
+;; Use a sane font
 (add-to-list 'default-frame-alist
              '(font . "Go Mono 10"))
 
@@ -30,15 +33,26 @@
 (blink-cursor-mode 1)
 (setq blink-cursor-blinks 0)
 
+;; Nice frame title
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
+
+;; Never ever ring the bell
 (setq ring-bell-function 'ignore)
+
+;; Start on the dashboard
 (setq initial-buffer-choice '(lambda ()
                                (require 'dashboard)
                                (dashboard-insert-startupify-lists) ;; Make sure the dashboard is updated
                                (get-buffer "*dashboard*"))) ;; Open the dashboard when running emacsclient
-(defalias 'yes-or-no-p 'y-or-n-p) ;; Never ask me to type out 'yes' or 'no'
-(setq mouse-yank-at-point t) ;; Oh my god yes
+
+;; Never ask me to type out 'yes' or 'no'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Make mouse yanking less awkward
+(setq mouse-yank-at-point t)
+
+;; Use mouse in terminals
 (add-hook 'tty-setup-hook
           (lambda ()
             (xterm-mouse-mode)))
