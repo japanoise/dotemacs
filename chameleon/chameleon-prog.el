@@ -147,5 +147,11 @@
 (use-package cider)
 (use-package cljdoc)
 
+;; Lua
+(use-package lua-mode)
+
+;; Groovy
+(use-package groovy-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
