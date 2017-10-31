@@ -79,5 +79,8 @@
           '(lambda ()
              (dired-hide-details-mode -1)))
 
+;; fill-column-indicator: useful when hacking at work
+(use-package fill-column-indicator)
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
