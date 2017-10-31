@@ -24,8 +24,12 @@
 (setq frame-resize-pixelwise t)
 (add-to-list 'default-frame-alist
              '(font . "Go Mono 10"))
+
+;; Eternal blinking cursor
 (setq-default cursor-type 'bar)
 (blink-cursor-mode 1)
+(setq blink-cursor-blinks 0)
+
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
 (setq ring-bell-function 'ignore)
