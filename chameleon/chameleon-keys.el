@@ -98,5 +98,9 @@
 ;; Better use for S-<arrow> - fast window switching
 (windmove-default-keybindings)
 
+;; Since I often want to know the wordcount of a buffer
+(global-set-key (kbd "C-M-=")
+                'count-words)
+
 (provide 'chameleon-keys)
 ;;; chameleon-keys.el ends here
