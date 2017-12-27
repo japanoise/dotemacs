@@ -114,6 +114,10 @@
    ("\\.md\\'" . markdown-mode)
    ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (setq-local fill-column 80)
+            (auto-fill-mode)))
 
 ;; Haskell mode.
 (use-package haskell-mode)
