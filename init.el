@@ -78,7 +78,9 @@
   (load-file "~/.emacs.d/chameleon/xemacs-chameleon-theme.el")
   (use-package doom-themes
     :config (setq doom-vibrant-brighter-comments t)(setq doom-vibrant-brighter-modeline t)(setq doom-vibrant-comment-bg t))
-  (defvar chameleon/themes '(doom-vibrant xemacs-chameleon)
+  (use-package color-theme-sanityinc-tomorrow)
+  (defvar chameleon/themes '(doom-vibrant sanityinc-tomorrow-eighties
+                                          xemacs-chameleon)
     "Themes to rotate through.")
   (defun chameleon/rotate-themes ()
     "Switch to the next theme in chameleon/themes."
