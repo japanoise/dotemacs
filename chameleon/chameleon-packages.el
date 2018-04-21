@@ -10,9 +10,9 @@
 ;; ## Enable packages
 (eval-when-compile (require 'use-package)
                    (setq use-package-always-ensure t)) ;; Make use-package auto-installs everything
-(require 'diminish) ;; Bundled with emacs, no need to u-p it
-(use-package highlight-chars
-  :init (add-hook 'prog-mode-hook 'hc-highlight-trailing-whitespace))
+(use-package diminish) ;; While this is bundled with Emacs 25, it isn't with 24.
+(require 'highlight-chars) ;; Vendored
+(add-hook 'prog-mode-hook 'hc-highlight-trailing-whitespace)
 (use-package color-theme-modern)
 (use-package smart-tabs-mode)
 (use-package whitespace-cleanup-mode) ;; Since my .vimrc used to do the same thing

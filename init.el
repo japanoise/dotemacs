@@ -12,10 +12,17 @@
 ;; ## Set up package lists & use-package
 (require 'package)
 (setq package-enable-at-startup nil)
+(if (fboundp 'gnutls-available-p)
+    (fmakunbound 'gnutls-available-p))
+(setq tls-program '("gnutls-cli --tofu -p %p %h")
+      imap-ssl-program '("gnutls-cli --tofu -p %p %s")
+      smtpmail-stream-type 'starttls
+      starttls-extra-arguments '("--tofu")
+      )
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
@@ -25,6 +32,7 @@
   (package-install 'use-package))
 
 (eval-when-compile (add-to-list 'load-path "~/.emacs.d/chameleon"))
+(eval-when-compile (add-to-list 'load-path "~/.emacs.d/vendor"))
 
 (require 'chameleon-variables)
 

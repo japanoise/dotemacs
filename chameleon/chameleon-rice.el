@@ -90,7 +90,7 @@
 (setq-default major-mode 'text-mode)
 
 ;; Dired tweaks - use dired+ and pass -h to ls
-(use-package dired+)
+(require 'dired+)
 (global-dired-hide-details-mode -1)
 (setq-default dired-listing-switches "-alh")
 (add-hook 'dired-mode-hook
@@ -98,7 +98,8 @@
              (dired-hide-details-mode -1)))
 
 ;; fill-column-indicator: useful when hacking at work
-(use-package fill-column-indicator)
+(when (>= emacs-major-version 25)
+  (use-package fill-column-indicator))
 
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
