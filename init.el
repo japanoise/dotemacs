@@ -9,16 +9,25 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
+;; ## Make sure paths are set
+(setenv "PATH"
+        (concat (getenv "PATH")
+                ":"
+                (getenv "HOME")
+                "/bin"))
+
 ;; ## Set up package lists & use-package
 (require 'package)
 (setq package-enable-at-startup nil)
 (if (fboundp 'gnutls-available-p)
     (fmakunbound 'gnutls-available-p))
 (setq tls-program '("gnutls-cli --tofu -p %p %h")
-      imap-ssl-program '("gnutls-cli --tofu -p %p %s")
-      smtpmail-stream-type 'starttls
-      starttls-extra-arguments '("--tofu")
-      )
+      imap-ssl-program
+      '("gnutls-cli --tofu -p %p %s")
+      smtpmail-stream-type
+      'starttls
+      starttls-extra-arguments
+      '("--tofu"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives
