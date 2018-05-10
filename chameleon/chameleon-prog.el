@@ -21,6 +21,8 @@
 
 ;;; Code:
 
+(eval-when-compile (add-to-list 'load-path "~/.emacs.d/vendor"))
+
 (defun buffer-mode (&optional buffer-or-name)
   "Return the major mode associated with a buffer.  If BUFFER-OR-NAME is nil return current buffer's mode."
   (buffer-local-value 'major-mode
@@ -153,6 +155,7 @@
 
 ;; Lua
 (use-package lua-mode)
+(require 'pico8)
 
 ;; Groovy
 (use-package groovy-mode)
