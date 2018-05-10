@@ -1,3 +1,4 @@
+.\#*
 auto-save-list/
 %backup%~
 bookmarks
@@ -13,6 +14,7 @@ projectile-bookmarks.eld
 recentf
 recentf~
 savehist
+session.*
 srecode-map.el
 thumbs/
 tramp
