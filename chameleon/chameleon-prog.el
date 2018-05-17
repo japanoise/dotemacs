@@ -160,5 +160,8 @@
 ;; Groovy
 (use-package groovy-mode)
 
+;; cmake
+(use-package cmake-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
