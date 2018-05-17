@@ -15,6 +15,10 @@
                 ":"
                 (getenv "HOME")
                 "/bin"))
+(unless (getenv "GOPATH")
+  (setenv "GOPATH"
+          (concat (getenv "HOME")
+                  "/devel/go/")))
 
 ;; ## Set up package lists & use-package
 (require 'package)
