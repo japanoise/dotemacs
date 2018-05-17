@@ -42,6 +42,7 @@
 (define-derived-mode pico8-mode
   lua-mode
   "pico-8"
+  "major mode for pico-8 carts"
   (setq font-lock-defaults '((pico8-font-lock-keywords))))
 
 ;;;###autoload
