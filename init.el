@@ -19,8 +19,6 @@
 ;; ## Set up package lists & use-package
 (require 'package)
 (setq package-enable-at-startup nil)
-(if (fboundp 'gnutls-available-p)
-    (fmakunbound 'gnutls-available-p))
 (setq tls-program '("gnutls-cli --tofu -p %p %h")
       imap-ssl-program
       '("gnutls-cli --tofu -p %p %s")
@@ -113,6 +111,14 @@
     (setq chameleon/themes (-rotate (- (length chameleon/themes)
                                        1)
                                     chameleon/themes))
+    ;; HACK: Fix org-bullets colouring
+    (save-window-excursion (mapc (lambda (x)
+                                   (when (string= (buffer-mode x)
+                                                  "org-mode")
+                                     (switch-to-buffer x)
+                                     (org-save-outline-visibility 'use-markers
+                                       (org-mode-restart))))
+                                 (buffer-list)))
     (redraw-display))
   (global-set-key (kbd "C-c C-t")
                   'chameleon/rotate-themes)
