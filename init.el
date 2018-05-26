@@ -74,6 +74,7 @@
 
 (global-whitespace-cleanup-mode)
 (diminish 'whitespace-cleanup-mode)
+(setq require-final-newline t)
 
 (global-diff-hl-mode 1)
 (global-page-break-lines-mode 1)
