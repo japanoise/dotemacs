@@ -102,5 +102,33 @@
 (global-set-key (kbd "C-M-=")
                 'count-words)
 
+;; wc for org mode - noonianatall's comment here http://irreal.org/blog/?p=5722
+(require 'org)
+(defun my/count-words-in-subtree-or-region ()
+  "Counts words in an org mode subtree.  Bind this to a key in 'org-mode', e.g. C-=."
+  (interactive)
+  (call-interactively (if (region-active-p)
+                          'count-words-region
+                        'my/count-words-in-subtree)))
+
+(defun my/count-words-in-subtree ()
+  "Count words in current node and child nodes, excluding heading text."
+  (interactive)
+  (org-with-wide-buffer (message "%s words in subtree"
+                                 (-sum (org-map-entries (lambda ()
+                                                          (outline-back-to-heading)
+                                                          (forward-line 1)
+                                                          (while (or (looking-at org-keyword-time-regexp)
+                                                                     (org-in-drawer-p))
+                                                            (forward-line 1))
+                                                          (count-words (point)
+                                                                       (progn
+                                                                         (outline-end-of-subtree)
+                                                                         (point))))
+                                                        nil
+                                                        'tree)))))
+
+(define-key org-mode-map (kbd "C-=") 'my/count-words-in-subtree-or-region)
+
 (provide 'chameleon-keys)
 ;;; chameleon-keys.el ends here
