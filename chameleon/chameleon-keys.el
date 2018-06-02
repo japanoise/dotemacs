@@ -104,6 +104,7 @@
 
 ;; wc for org mode - noonianatall's comment here http://irreal.org/blog/?p=5722
 (require 'org)
+(require 'dash)
 (defun my/count-words-in-subtree-or-region ()
   "Counts words in an org mode subtree.  Bind this to a key in 'org-mode', e.g. C-=."
   (interactive)
