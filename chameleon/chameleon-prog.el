@@ -163,5 +163,13 @@
 ;; cmake
 (use-package cmake-mode)
 
+;; Editorconfig
+(if (executable-find "editorconfig")
+    (use-package editorconfig
+      :ensure t
+      :diminish editorconfig-mode
+      :config (editorconfig-mode 1))
+  (message "Unable to find editorconfig; install it from here: https://github.com/editorconfig/editorconfig-core-c"))
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
