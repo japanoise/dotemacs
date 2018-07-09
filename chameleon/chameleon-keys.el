@@ -21,6 +21,8 @@
 
 ;;; Code:
 
+(require 'chameleon-variables)
+
 (global-set-key (kbd "M-]")
                 'flycheck-next-error)
 (global-set-key (kbd "M-[")
@@ -130,6 +132,38 @@
                                                         'tree)))))
 
 (define-key org-mode-map (kbd "C-=") 'my/count-words-in-subtree-or-region)
+
+;; https://www.emacswiki.org/emacs/IncrementNumber
+(defun my-change-number-at-point (change)
+  (let ((number (number-at-point))
+        (point (point)))
+    (when number
+      (progn
+        (forward-word)
+        (search-backward (number-to-string number))
+        (replace-match (number-to-string (funcall change number)))
+        (goto-char point)))))
+(defun my-increment-number-at-point ()
+  "Increment number at point like vim's C-a."
+  (interactive)
+  (my-change-number-at-point '1+ ))
+(defun my-decrement-number-at-point ()
+  "Decrement number at point like vim's C-x."
+  (interactive)
+  (my-change-number-at-point '1- ))
+
+(global-set-key (kbd "C-c a")
+                'my-increment-number-at-point)
+(global-set-key (kbd "C-c x")
+                'my-decrement-number-at-point)
+
+(define-key chameleon-prefix-map (kbd "a") 'my-increment-number-at-point)
+(define-key chameleon-prefix-map (kbd "x") 'my-decrement-number-at-point)
+
+(global-set-key (kbd "<kp-add>")
+                'my-increment-number-at-point)
+(global-set-key (kbd "<kp-subtract>")
+                'my-decrement-number-at-point)
 
 (provide 'chameleon-keys)
 ;;; chameleon-keys.el ends here
