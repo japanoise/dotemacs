@@ -163,6 +163,9 @@
 ;; cmake
 (use-package cmake-mode)
 
+;; Inform 6
+(use-package inform-mode)
+
 ;; Editorconfig
 (if (executable-find "editorconfig")
     (use-package editorconfig
