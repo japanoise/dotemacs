@@ -48,8 +48,8 @@
                 'my/toggle-overwrite-mode-and-change-cursor)
 
 ;; Nice frame title
-(setq frame-title-format "%b - emacs")
-(setq icon-title-format "%b - emacs")
+(setq frame-title-format "%b %&- emacs")
+(setq icon-title-format "%b %&- emacs")
 
 ;; Never ever ring the bell
 (setq ring-bell-function 'ignore)
