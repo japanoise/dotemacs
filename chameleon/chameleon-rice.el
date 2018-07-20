@@ -33,6 +33,20 @@
 (blink-cursor-mode 1)
 (setq blink-cursor-blinks 0)
 
+;; override insert key to change cursor in overwrite mode - https://gist.github.com/fisher/04d6966491748efa5ad3
+(defvar cursor-mode-status 0)
+(defun my/toggle-overwrite-mode-and-change-cursor ()
+  "As its name suggests."
+  (interactive)
+  (cond
+   ((eq cursor-mode-status 0)
+    (setq cursor-type 'box)
+    (overwrite-mode (setq cursor-mode-status 1)))
+   (t (setq cursor-type 'bar)
+      (overwrite-mode (setq cursor-mode-status 0)))))
+(global-set-key (kbd "<insert>")
+                'my/toggle-overwrite-mode-and-change-cursor)
+
 ;; Nice frame title
 (setq frame-title-format "%b - emacs")
 (setq icon-title-format "%b - emacs")
