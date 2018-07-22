@@ -165,6 +165,11 @@
 
 ;; Inform 6
 (use-package inform-mode)
+(add-hook 'inform-mode-hook
+          (lambda ()
+            (rainbow-delimiters-mode)
+            (linum-mode)
+            (flyspell-prog-mode)))
 
 ;; Editorconfig
 (if (executable-find "editorconfig")
