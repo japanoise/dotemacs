@@ -170,7 +170,8 @@
                         '(widget-field-face ((t (:background "gray85" :foreground "black"))))
                         '(widget-inactive-face ((t (:foreground "dim gray"))))
                         '(yellow ((t (:foreground "yellow"))))
-                        '(zmacs-region ((t (:background "gray65")))))
+                        '(zmacs-region ((t (:background "gray65"))))
+                        '(term-color-yellow ((t (:foreground "yellow4")))))
 
 ;;;###autoload
 (when load-file-name
