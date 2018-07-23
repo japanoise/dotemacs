@@ -117,7 +117,8 @@
 (setq-default dired-listing-switches "-alh")
 (add-hook 'dired-mode-hook
           '(lambda ()
-             (dired-hide-details-mode -1)))
+             (dired-hide-details-mode -1) ; Please don't hide the details!
+             (hl-line-mode))) ; Legibility tweak
 
 ;; fill-column-indicator: useful when hacking at work
 (when (>= emacs-major-version 25)
