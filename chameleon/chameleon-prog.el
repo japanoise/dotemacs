@@ -153,6 +153,14 @@
 (use-package cider)
 (use-package cljdoc)
 
+;; Scheme; Gauche - https://github.com/shirok/Gauche
+(require 'scheme)
+(setq scheme-program-name "gosh -i")
+(add-hook 'inferior-scheme-mode-hook
+          (lambda ()
+            (rainbow-delimiters-mode-enable)
+            (smartparens-mode)))
+
 ;; Lua
 (use-package lua-mode)
 (require 'pico8)
