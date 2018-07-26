@@ -155,9 +155,27 @@
 
 ;; Scheme; Gauche - https://github.com/shirok/Gauche
 (require 'scheme)
+(require 'scheme-complete)
 (setq scheme-program-name "gosh -i")
+
+(autoload 'scheme-get-current-symbol-info
+  "scheme-complete" nil t)
+
+(define-key scheme-mode-map "\e\t" 'scheme-smart-complete)
+(define-key scheme-mode-map "\t" 'scheme-complete-or-indent)
+
+(add-hook 'scheme-mode-hook
+          (lambda ()
+            (make-local-variable 'eldoc-documentation-function)
+            (setq eldoc-documentation-function 'scheme-get-current-symbol-info)
+            (setq-local lisp-indent-function 'scheme-smart-indent-function)
+            (eldoc-mode)))
+
 (add-hook 'inferior-scheme-mode-hook
           (lambda ()
+            (make-local-variable 'eldoc-documentation-function)
+            (setq eldoc-documentation-function 'scheme-get-current-symbol-info)
+            (eldoc-mode)
             (rainbow-delimiters-mode-enable)
             (smartparens-mode)))
 
