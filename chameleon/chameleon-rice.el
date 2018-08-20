@@ -125,13 +125,13 @@
   (use-package fill-column-indicator))
 
 ;; dump session.* files in /tmp - I really don't want these cluttering up my .emacs.d!
-(eval-after- 'x-win
-             (let ((session-dir "/tmp/emacs-session/"))
-               `(progn
-                  (make-directory ,session-dir t)
-                  (defun emacs-session-filename (session-id)
-                    "Construct a filename to save the session in based on SESSION-ID. Overrides the default to throw it into /tmp/ to get GCd by the kernel. Thanks no-littering."
-                    (expand-file-name session-id ,session-dir)))))
+(eval-after-load 'x-win
+  (let ((session-dir "/tmp/emacs-session/"))
+    `(progn
+       (make-directory ,session-dir t)
+       (defun emacs-session-filename (session-id)
+         "Construct a filename to save the session in based on SESSION-ID. Overrides the default to throw it into /tmp/ to get GCd by the kernel. Thanks no-littering."
+         (expand-file-name session-id ,session-dir)))))
 
 ;; Anzu mode (counts isearch occurrences)
 (use-package anzu :diminish anzu-mode)
