@@ -109,6 +109,7 @@
                :when '(sp-web-mode-is-code-context))
 
 ;; Markdown mode
+(use-package wc-mode)
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode):mode
@@ -119,7 +120,8 @@
 (add-hook 'markdown-mode-hook
           (lambda ()
             (setq-local fill-column 80)
-            (auto-fill-mode)))
+            (auto-fill-mode)
+            (wc-mode)))
 
 ;; Haskell mode.
 (use-package haskell-mode)
