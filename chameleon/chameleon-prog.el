@@ -201,5 +201,11 @@
       :config (editorconfig-mode 1))
   (message "Unable to find editorconfig; install it from here: https://github.com/editorconfig/editorconfig-core-c"))
 
+;; GBZ80
+(use-package mwim)
+(require 'z80-mode)
+(add-to-list 'auto-mode-alist
+             '("\\.z80\\'" . z80-mode))
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
