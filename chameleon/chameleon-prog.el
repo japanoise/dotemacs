@@ -41,12 +41,6 @@
 (require 'srefactor-lisp)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (add-hook 'before-save-hook
-                      (lambda ()
-                        (when (eq (buffer-mode) 'emacs-lisp-mode)
-                          (srefactor-lisp-format-buffer)))
-                      nil
-                      'local)
             (setq indent-tabs-mode nil)))
 
 ;; Go mode. Dependencies:
