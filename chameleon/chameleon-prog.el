@@ -206,6 +206,16 @@
 (require 'z80-mode)
 (add-to-list 'auto-mode-alist
              '("\\.z80\\'" . z80-mode))
+(defun my/gameboy-frequency ()
+  "Convert a frequency in HZ to the format used in the sound registers on a Game Boy."
+  (interactive)
+  (let ((y (string-to-number (read-string "Frequency? (HZ, Dec): "))))
+    (if (> y 0)
+        (let* ((num (/ (* 2048 (- y 64)) y))
+               (lo (mod num 256))
+               (hi (int-to-binary-string (lsh num -8))))
+          (message "$%03X - lo $%02X, hi %%%s" num lo hi))
+      (message "Invalid number. Must be >0."))))
 
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
