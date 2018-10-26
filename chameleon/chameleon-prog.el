@@ -185,6 +185,9 @@
 ;; cmake
 (use-package cmake-mode)
 
+;; nsis
+(use-package nsis-mode)
+
 ;; Inform 6
 (use-package inform-mode)
 (add-hook 'inform-mode-hook
