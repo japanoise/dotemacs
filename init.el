@@ -85,6 +85,7 @@
 ;; ## Misc. Customization
 (require 'chameleon-keys)
 (require 'chameleon-rice)
+(require 'keyboard-mode)
 
 ;; Recfile mode - plaintext databases (https://www.gnu.org/software/recutils)
 (require 'rec-mode)
