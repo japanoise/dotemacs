@@ -8,7 +8,9 @@
   (list
    '(";.*" . font-lock-comment-face)
    '("^\\*.*" . font-lock-comment-face)
-   '("\\<\\(ADC\\|ADD\\|AND\\|BIT\\|CALL\\|CCF\\|CP\\|CPD\\|CPDR\\|CPIR\\|CPI\\|CPL\\|DAA\\|DEC\\|DI\\|DJNZ\\|EI\\|EX\\|EXX\\|HALT\\|IM\\|IN\\|INC\\|IND\\|INDR\\|INI\\|INIR\\|JP\\|JR\\|LD\\|LDD\\|LDDR\\|LDI\\|LDIR\\|NEG\\|NOP\\|MLT\\|OR\\|OTDM\\|OTDMR\\|OTDR\\|OTIM\\|OTIMR\\|OTIR\\|OUT\\|OUTD\\|OUTI\\|POP\\|PUSH\\|RES\\|RET\\|RETI\\|RETN\\|RL\\|RLA\\|RLC\\|RLCA\\|RLD\\|RR\\|RRA\\|RRC\\|RRCA\\|RRD\\|RST\\|SBC\\|SCF\\|SET\\|SLA\\|SLP\\|SRA\\|SRL\\|SUB\\|TST\\|TSTIO\\|XOR\\|adc\\|add\\|and\\|bit\\|call\\|ccf\\|cp\\|cpd\\|cpdr\\|cpir\\|cpi\\|cpl\\|daa\\|dec\\|di\\|djnz\\|ei\\|ex\\|exx\\|halt\\|im\\|in\\|inc\\|ind\\|indr\\|ini\\|inir\\|jp\\|jr\\|ld\\|ldd\\|lddr\\|ldi\\|ldir\\|neg\\|nop\\|mlt\\|or\\|otdm\\|otdmr\\|otdr\\|otim\\|otimr\\|otir\\|out\\|outd\\|outi\\|pop\\|push\\|res\\|ret\\|reti\\|retn\\|rl\\|rla\\|rlc\\|rlca\\|rld\\|rr\\|rra\\|rrc\\|rrca\\|rrd\\|rst\\|sbc\\|scf\\|set\\|sla\\|slp\\|sra\\|srl\\|sub\\|tst\\|tstio\\|xor\\|A\\|B\\|C\\|D\\|E\\|H\\|L\\|AF\\|BC\\|DE\\|HL\\|IX\\|IY\\|SP\\|PC\\|a\\|b\\|c\\|d\\|e\\|h\\|l\\|af\\|bc\\|de\\|hl\\|ix\\|iy\\|sp\\|pc\\|\\|NC\\|C\\|M\\|nc\\|c\\|m\\|Z\\|z\\|NZ\\|nz\\|\\|[Pp]\\([Oo]*\\|[Ee]*\\)\\|BCALL\\|bcall\\)\\>" . font-lock-builtin-face)
+   '("\\<\\(adc\\|add\\|and\\|cp\\|dec\\|inc\\|or\\|sbc\\|sub\\|xor\\|call\\|jp\\|jr\\|ret\\|rst\\|bit\\|res\\|rl\\|rlc\\|rr\\|rrc\\|set\\|sla\\|sra\\|srl\\|swap\\|ccf\\|cpl\\|daa\\|di\\|ei\\|halt\\|nop\\|scf\\|stop\\|ld\\|pop\\|push\\)\\>" . font-lock-builtin-face)
+   '("\\<\\(ADC\\|ADD\\|AND\\|CP\\|DEC\\|INC\\|OR\\|SBC\\|SUB\\|XOR\\|CALL\\|JP\\|JR\\|RET\\|RST\\|BIT\\|RES\\|RL\\|RLC\\|RR\\|RRC\\|SET\\|SLA\\|SRA\\|SRL\\|SWAP\\|CCF\\|CPL\\|DAA\\|DI\\|EI\\|HALT\\|NOP\\|SCF\\|STOP\\|LD\\|POP\\|PUSH\\)\\>" . font-lock-builtin-face)
+   '("\\<\\(a\\|b\\|c\\|d\\|e\\|h\\|l\\|af\\|bc\\|de\\|hl\\|sp\\|A\\|B\\|C\\|D\\|E\\|H\\|L\\|AF\\|BC\\|DE\\|HL\\|SP\\)\\>" . font-lock-variable-name-face)
    '("\\(\\w*:\\)"  . font-lock-variable-name-face))
   "Minimal highlighting expressions for rgbds mode.")
 (defconst rgbds-font-lock-keywords-2
