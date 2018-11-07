@@ -174,7 +174,7 @@
   (let ((buf (get-buffer-create "*keyboard*")))
                   (set-buffer buf)
                   (pop-to-buffer buf))
-  (let* ((coords (nth 6 (nth 0 (cdr event))))
+  (let* ((coords (nth 6 (car (cdr event))))
          (x (car coords))
          (y (cdr coords)))
     (message "x: %d y: %d" x y)
