@@ -215,6 +215,9 @@
 (require 'rgbds-mode)
 (add-to-list 'auto-mode-alist
              '("\\.gmb\\'" . rgbds-mode))
+(add-hook 'rgbds-mode-hook
+          (lambda ()
+            (rainbow-delimiters-mode -1)))
 
 (defun my/gameboy-frequency ()
   "Convert a frequency in HZ to the format used in the sound registers on a Game Boy."
