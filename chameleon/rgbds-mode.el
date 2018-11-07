@@ -8,8 +8,8 @@
   (list
    '(";.*" . font-lock-comment-face)
    '("^\\*.*" . font-lock-comment-face)
-   '("\\<\\(adc\\|add\\|and\\|cp\\|dec\\|inc\\|or\\|sbc\\|sub\\|xor\\|call\\|jp\\|jr\\|ret\\|rst\\|bit\\|res\\|rl\\|rlc\\|rr\\|rrc\\|set\\|sla\\|sra\\|srl\\|swap\\|ccf\\|cpl\\|daa\\|di\\|ei\\|halt\\|nop\\|scf\\|stop\\|ld\\|pop\\|push\\)\\>" . font-lock-builtin-face)
-   '("\\<\\(ADC\\|ADD\\|AND\\|CP\\|DEC\\|INC\\|OR\\|SBC\\|SUB\\|XOR\\|CALL\\|JP\\|JR\\|RET\\|RST\\|BIT\\|RES\\|RL\\|RLC\\|RR\\|RRC\\|SET\\|SLA\\|SRA\\|SRL\\|SWAP\\|CCF\\|CPL\\|DAA\\|DI\\|EI\\|HALT\\|NOP\\|SCF\\|STOP\\|LD\\|POP\\|PUSH\\)\\>" . font-lock-builtin-face)
+   '("\\<\\(adc\\|add\\|and\\|cp\\|dec\\|inc\\|or\\|sbc\\|sub\\|xor\\|call\\|jp\\|jr\\|ret\\|rst\\|bit\\|res\\|rl\\|rlc\\|rr\\|rrc\\|set\\|sla\\|sra\\|srl\\|swap\\|ccf\\|cpl\\|daa\\|di\\|ei\\|halt\\|nop\\|scf\\|stop\\|ld\\|pop\\|push\\|reti\\|rla\\|rlca\\|rra\\|rrca\\)\\>" . font-lock-builtin-face)
+   '("\\<\\(ADC\\|ADD\\|AND\\|CP\\|DEC\\|INC\\|OR\\|SBC\\|SUB\\|XOR\\|CALL\\|JP\\|JR\\|RET\\|RST\\|BIT\\|RES\\|RL\\|RLC\\|RR\\|RRC\\|SET\\|SLA\\|SRA\\|SRL\\|SWAP\\|CCF\\|CPL\\|DAA\\|DI\\|EI\\|HALT\\|NOP\\|SCF\\|STOP\\|LD\\|POP\\|PUSH\\|RETI\\|RLA\\|RLCA\\|RRA\\|RRCA\\)\\>" . font-lock-builtin-face)
    '("\\<\\(a\\|b\\|c\\|d\\|e\\|h\\|l\\|af\\|bc\\|de\\|hl\\|sp\\|A\\|B\\|C\\|D\\|E\\|H\\|L\\|AF\\|BC\\|DE\\|HL\\|SP\\)\\>" . font-lock-variable-name-face)
    '("\\(\\w*:\\)"  . font-lock-variable-name-face))
   "Minimal highlighting expressions for rgbds mode.")
