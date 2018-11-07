@@ -21,7 +21,8 @@
 
 ;;; Code:
 
-(eval-when-compile (add-to-list 'load-path "~/.emacs.d/vendor"))
+(eval-when-compile (add-to-list 'load-path "~/.emacs.d/vendor")
+                   (add-to-list 'load-path "~/.emacs.d/chameleon"))
 
 (defun buffer-mode (&optional buffer-or-name)
   "Return the major mode associated with a buffer.  If BUFFER-OR-NAME is nil return current buffer's mode."
@@ -206,9 +207,15 @@
 
 ;; GBZ80
 (use-package mwim)
+
 (require 'z80-mode)
 (add-to-list 'auto-mode-alist
              '("\\.z80\\'" . z80-mode))
+
+(require 'rgbds-mode)
+(add-to-list 'auto-mode-alist
+             '("\\.gmb\\'" . rgbds-mode))
+
 (defun my/gameboy-frequency ()
   "Convert a frequency in HZ to the format used in the sound registers on a Game Boy."
   (interactive)
