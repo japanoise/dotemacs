@@ -3,7 +3,8 @@
 ;; Copyright (C) 2017
 ;;; Code:
 
-(eval-when-compile (add-to-list 'load-path "~/.emacs.d/chameleon"))
+(eval-when-compile (add-to-list 'load-path "~/.emacs.d/chameleon")
+                   (add-to-list 'load-path "~/.emacs.d/vendor"))
 
 (require 'chameleon-variables)
 
