@@ -230,5 +230,9 @@
           (message "$%03X - lo $%02X, hi %%%s" num lo hi))
       (message "Invalid number. Must be >0."))))
 
+;; C
+;; Never ever ever ever use gnu style
+(setq c-default-style "linux")
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
