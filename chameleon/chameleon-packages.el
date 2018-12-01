@@ -137,4 +137,13 @@
 ;; Either the Key ID or set to nil to use symmetric encryption.
 (setq org-crypt-key nil)
 
+;; Webpaste
+(use-package webpaste
+  :ensure t
+  :bind (("C-c C-p C-b" . webpaste-paste-buffer)
+         ("C-c C-p C-r" . webpaste-paste-region))
+  :config
+         (progn
+           (setq webpaste-provider-priority '("ix.io" "ptpb.pw" "dpaste.de"))))
+
 ;;; chameleon-packages.el ends here
