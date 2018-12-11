@@ -182,6 +182,10 @@
 
 ;; Groovy
 (use-package groovy-mode)
+(add-hook 'groovy-mode-hook
+          (lambda ()
+            (setq-local indent-tabs-mode 'nil)
+            (setq-local c-basic-offset 4)))
 
 ;; cmake
 (use-package cmake-mode)
