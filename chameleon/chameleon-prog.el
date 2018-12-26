@@ -50,6 +50,7 @@
 ;; - golang.org/x/tools/cmd/goimports
 ;; - github.com/rogpeppe/godef
 ;; - golang.org/x/tools/cmd/gorename
+;; I.E. go get github.com/nsf/gocode github.com/godoctor/godoctor golang.org/x/tools/cmd/goimports github.com/rogpeppe/godef golang.org/x/tools/cmd/gorename
 (use-package go-mode
   :config (use-package godoctor):bind
   (("C-c C-r" . go-remove-unused-imports)))
