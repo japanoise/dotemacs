@@ -165,5 +165,24 @@
 (global-set-key (kbd "<kp-subtract>")
                 'my-decrement-number-at-point)
 
+;; Skeletons
+;; https://github.com/golang/go/wiki/SliceTricks
+(define-skeleton slicetricks-delete
+  "Delete item at index from a slice."
+  "Slice name: "
+  "copy(" str "[index:], " str "[index+1:])" \n
+  str "[len(" str ")-1] = nil // or the zero value of T" \n
+  str " = " str "[:len(" str ")-1]" _)
+
+(define-skeleton slicetricks-insert
+  "Insert an item into a slice at index."
+  "Slice name: "
+  str " = append(" str ", 0 /* use the zero value of the element type */)" \n
+  "copy(" str "[index+1:], " str "[index:])" \n
+  str "[index] = " _)
+
+(define-key chameleon-prefix-map (kbd "g d") 'slicetricks-delete)
+(define-key chameleon-prefix-map (kbd "g i") 'slicetricks-insert)
+
 (provide 'chameleon-keys)
 ;;; chameleon-keys.el ends here
