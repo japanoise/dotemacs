@@ -124,7 +124,6 @@
 
 ;; Rainbow mode
 (use-package rainbow-mode)
-(provide 'chameleon-packages)
 
 ;; Stuff for org-mode
 (use-package org-bullets)
@@ -146,4 +145,8 @@
          (progn
            (setq webpaste-provider-priority '("ix.io" "ptpb.pw" "dpaste.de"))))
 
+;; greentext-mode
+(require 'greentext-mode)
+
+(provide 'chameleon-packages)
 ;;; chameleon-packages.el ends here
