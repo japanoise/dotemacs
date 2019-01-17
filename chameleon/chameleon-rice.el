@@ -137,5 +137,11 @@
 (use-package anzu :diminish anzu-mode)
 (global-anzu-mode)
 
+;; Disable text-scale-adjust - I fucking hate this function. Usually I
+;; press C-x C-- by accident and then have to C-h l in order to figure
+;; out what the heck I just did.
+(dolist (key '("C-x C-0" "C-x C-=" "C-x C--" "C-x C-+"))
+  (global-unset-key (kbd key)))
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
