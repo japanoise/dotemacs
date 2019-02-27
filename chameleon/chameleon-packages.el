@@ -90,17 +90,16 @@
 (use-package dashboard
   :ensure t
   :diminish dashboard-mode
-  :bind (:map dashboard-mode-map
-              ("<down-mouse-1>" . nil)
-              ("<mouse-1>" . widget-button-click)
-              ("<mouse-2>" . widget-button-click)):config
-              (setq dashboard-banner-logo-title "EmacsOS - Ready.")
-              (setq dashboard-startup-banner 'official)
-              (setq dashboard-items '((recents . 10)
-                                      (projects . 10)
-                                      (agenda . 5)))
-              (dashboard-setup-startup-hook)
-              :init (require 'dashboard)(dashboard-insert-startupify-lists))
+  :config
+  (setq dashboard-banner-logo-title "EmacsOS - Ready.")
+  (setq dashboard-startup-banner 'official)
+  (setq dashboard-items '((recents . 10)
+                          (projects . 10)
+                          (agenda . 5)))
+  (dashboard-setup-startup-hook)
+  :init
+  (require 'dashboard)
+  (dashboard-insert-startupify-lists))
 
 ;; Which-key - spacemacs' nice little prefix popup
 (use-package which-key :diminish which-key-mode)
