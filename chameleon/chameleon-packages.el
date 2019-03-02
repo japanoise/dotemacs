@@ -147,5 +147,11 @@
 ;; greentext-mode
 (require 'greentext-mode)
 
+;; nov.el
+;; https://github.com/wasamasa/nov.el
+(use-package nov
+  :config (progn (setq nov-text-width 80)))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
 (provide 'chameleon-packages)
 ;;; chameleon-packages.el ends here
