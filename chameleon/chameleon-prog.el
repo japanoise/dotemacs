@@ -239,5 +239,9 @@
 ;; Never ever ever ever use gnu style
 (setq c-default-style "linux")
 
+;; J
+;; http://www.jsoftware.com/
+(use-package j-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
