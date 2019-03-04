@@ -1,4 +1,5 @@
 .\#*
+\#*\#
 auto-save-list/
 %backup%~
 bookmarks
@@ -10,6 +11,7 @@ emojis/
 eshell/
 image-dired/
 network-security.data
+nov-places
 projectile-bookmarks.eld
 recentf
 recentf~
