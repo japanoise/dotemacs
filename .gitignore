@@ -20,4 +20,5 @@ session.*
 srecode-map.el
 thumbs/
 tramp
+transient/
 url/
