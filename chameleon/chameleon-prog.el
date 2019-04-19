@@ -247,5 +247,8 @@
 ;; https://crystal-lang.org/
 (use-package crystal-mode)
 
+;; yaml-mode
+(use-package yaml-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
