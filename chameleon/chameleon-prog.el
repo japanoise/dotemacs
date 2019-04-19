@@ -243,5 +243,9 @@
 ;; http://www.jsoftware.com/
 (use-package j-mode)
 
+;; crystal-mode
+;; https://crystal-lang.org/
+(use-package crystal-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
