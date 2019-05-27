@@ -143,5 +143,8 @@
 (dolist (key '("C-x C-0" "C-x C-=" "C-x C--" "C-x C-+"))
   (global-unset-key (kbd key)))
 
+;; Save the recentf list every five minutes
+(run-at-time nil (* 5 60) 'recentf-save-list)
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
