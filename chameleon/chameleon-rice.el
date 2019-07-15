@@ -146,5 +146,14 @@
 ;; Save the recentf list every five minutes
 (run-at-time nil (* 5 60) 'recentf-save-list)
 
+;; Helpful
+(use-package helpful
+  :bind (("C-h f" . helpful-callable)
+         ("C-h F" . helpful-function)
+         ("C-h C" . helpful-command)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-c C-d" . helpful-at-point)))
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
