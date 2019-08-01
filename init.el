@@ -96,13 +96,19 @@
 (setq inhibit-x-resources t) ;; Never load settings from .Xresources
 
 (unless my/local-theme
-  (load-file "~/.emacs.d/chameleon/xemacs-chameleon-theme.el")
-  (use-package doom-themes
-    :config (setq doom-vibrant-brighter-comments t)(setq doom-vibrant-brighter-modeline t)(setq doom-vibrant-comment-bg t))
-  (use-package color-theme-sanityinc-tomorrow)
-  (defvar chameleon/themes '(doom-vibrant sanityinc-tomorrow-eighties
-                                          xemacs-chameleon)
+  ;; New dark themes
+  (use-package ample-theme)
+  (use-package nordless-theme)
+  (use-package lush-theme)
+  (use-package kaolin-themes)
+
+  (defvar chameleon/themes '(kaolin-light
+                             nordless
+                             lush
+                             kaolin-bubblegum)
+
     "Themes to rotate through.")
+
   (defun chameleon/rotate-themes ()
     "Switch to the next theme in chameleon/themes."
     (interactive)
@@ -126,6 +132,7 @@
                                        (org-mode-restart))))
                                  (buffer-list)))
     (redraw-display))
+
   (global-set-key (kbd "C-c C-t")
                   'chameleon/rotate-themes)
   (define-key chameleon-prefix-map (kbd "t") 'chameleon/rotate-themes))
@@ -149,7 +156,7 @@
 (my/load-file-if-exists "~/.emacs.d/chameleon/chameleon-custom.el") ;; Boot this to another file.
 (if my/local-theme
     (enable-theme my/local-theme)
-  (enable-theme 'xemacs-chameleon))
+  (chameleon/rotate-themes))
 (use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customise
 (setq sml/theme 'respectful)
 (setq sml/no-confirm-load-theme t)
