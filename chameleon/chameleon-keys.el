@@ -184,5 +184,27 @@
 (define-key chameleon-prefix-map (kbd "g d") 'slicetricks-delete)
 (define-key chameleon-prefix-map (kbd "g i") 'slicetricks-insert)
 
+;; Some Xah Lee rice: http://ergoemacs.org/emacs/emacs_new_empty_buffer.html
+(defun xah-new-empty-buffer ()
+  "Create a new empty buffer.
+New buffer will be named “untitled” or “untitled<2>”, “untitled<3>”, etc.
+
+It returns the buffer (for elisp programing).
+
+URL `http://ergoemacs.org/emacs/emacs_new_empty_buffer.html'
+Version 2017-11-01"
+  (interactive)
+  (let (($buf (generate-new-buffer "untitled")))
+    (switch-to-buffer $buf)
+    (funcall initial-major-mode)
+    (setq buffer-offer-save t)
+    $buf
+    ))
+
+(global-set-key (kbd "<f7>") 'xah-new-empty-buffer)
+
+;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
+(global-set-key (kbd "<f9>") 'whitespace-mode)
+
 (provide 'chameleon-keys)
 ;;; chameleon-keys.el ends here
