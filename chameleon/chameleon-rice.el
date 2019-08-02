@@ -155,5 +155,12 @@
          ("C-h k" . helpful-key)
          ("C-c C-d" . helpful-at-point)))
 
+;; Indent-tabs-mode: nil
+;; Hypocritical, I know. But I don't really like Emacs' behaviour when it comes to tabs.
+;; By default it *mixes* tabs and spaces for most modes (EWWWWWWWWW)
+;; So tell it not to fucking do that. Byproduct is that most modes will now be
+;; spaces, which is gross but inevitable. I've already kind of lost this holy war.
+(setq-default indent-tabs-mode nil)
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
