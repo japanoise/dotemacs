@@ -97,15 +97,12 @@
 
 (unless my/local-theme
   ;; New dark themes
-  (use-package ample-theme)
-  (use-package nordless-theme)
-  (use-package lush-theme)
-  (use-package kaolin-themes)
+  (use-package kaolin-themes
+    :config (setq kaolin-themes-comments-style 'color))
 
   (defvar chameleon/themes '(kaolin-light
-                             nordless
-                             lush
-                             kaolin-bubblegum)
+                             kaolin-bubblegum
+                             )
 
     "Themes to rotate through.")
 
