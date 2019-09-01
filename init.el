@@ -100,7 +100,14 @@
   (use-package kaolin-themes
     :config (setq kaolin-themes-comments-style 'color))
 
+  (use-package base16-theme
+    :config (setq base16-highlight-mode-line 'contrast))
+
   (defvar chameleon/themes '(kaolin-light
+                             base16-snazzy
+                             base16-nord
+                             base16-ocean
+                             base16-rebecca
                              kaolin-bubblegum
                              )
 
