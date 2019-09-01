@@ -162,9 +162,22 @@
 ;; spaces, which is gross but inevitable. I've already kind of lost this holy war.
 (setq-default indent-tabs-mode nil)
 
-;; Mood-line: new, better mode line
-(use-package mood-line)
-(mood-line-mode)
+;; Modeline: just another Emacs hacker
+(setq-default mode-line-format
+      (list
+       "%3l:%2c -"
+       mode-line-modified
+       "- "
+       '(-3 "%p")
+       " ---- "
+       (propertize "%b" 'keymap mode-line-buffer-identification-keymap
+                   'face 'mode-line-buffer-id
+                   'mouse-face 'mode-line-highlight)
+       " --  "
+       mode-line-modes
+       '(vc-mode vc-mode)
+       " -%-"
+       ))
 
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
