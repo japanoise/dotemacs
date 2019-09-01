@@ -162,5 +162,9 @@
 ;; spaces, which is gross but inevitable. I've already kind of lost this holy war.
 (setq-default indent-tabs-mode nil)
 
+;; Mood-line: new, better mode line
+(use-package mood-line)
+(mood-line-mode)
+
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here

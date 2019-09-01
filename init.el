@@ -114,9 +114,9 @@
             (when (member theme chameleon/themes)
               (disable-theme theme)))
           custom-enabled-themes)
-    (smart-mode-line-enable)
     (load-theme (car chameleon/themes)
                 t)
+    (message (format "%s" (car chameleon/themes)))
     (setq chameleon/themes (-rotate (- (length chameleon/themes)
                                        1)
                                     chameleon/themes))
@@ -154,10 +154,6 @@
 (if my/local-theme
     (enable-theme my/local-theme)
   (chameleon/rotate-themes))
-(use-package smart-mode-line) ;; Make the modeline suck less; this needs to come after customise
-(setq sml/theme 'respectful)
-(setq sml/no-confirm-load-theme t)
-(sml/setup)
 (load-file "~/.emacs.d/chameleon/chameleon-net.el") ;; uses a customized variable
 
 (provide 'init)
