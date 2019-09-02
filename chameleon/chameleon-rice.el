@@ -162,22 +162,25 @@
 ;; spaces, which is gross but inevitable. I've already kind of lost this holy war.
 (setq-default indent-tabs-mode nil)
 
-;; Modeline: just another Emacs hacker
-(setq-default mode-line-format
-      (list
-       "%3l:%2c -"
-       mode-line-modified
-       "- "
-       '(-3 "%p")
-       " ---- "
-       (propertize "%b" 'keymap mode-line-buffer-identification-keymap
-                   'face 'mode-line-buffer-id
-                   'mouse-face 'mode-line-highlight)
-       " --  "
-       mode-line-modes
-       '(vc-mode vc-mode)
-       " -%-"
-       ))
+(use-package mood-line)
+(mood-line-mode)
+
+(setq-default mode-line-format '((:eval (mood-line-format
+                                 (format-mode-line
+                                  (quote
+                                   ((:eval (mood-line-segment-position))
+                                    (:eval (mood-line-segment-modified))
+                                    (:eval (mood-line-segment-buffer-name))
+                                    (:eval (mood-line-segment-anzu))
+                                    (:eval (mood-line-segment-multiple-cursors)))))
+
+                                 (format-mode-line
+                                  (quote
+                                   ((:eval (mood-line-segment-vc))
+                                    mode-line-modes
+                                    (:eval (mood-line-segment-global-mode-string))
+                                    (:eval (mood-line-segment-flycheck))
+                                    (:eval (mood-line-segment-process)) " ")))))))
 
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
