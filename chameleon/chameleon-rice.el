@@ -164,23 +164,7 @@
 
 (use-package mood-line)
 (mood-line-mode)
-
-(setq-default mode-line-format '((:eval (mood-line-format
-                                 (format-mode-line
-                                  (quote
-                                   ((:eval (mood-line-segment-position))
-                                    (:eval (mood-line-segment-modified))
-                                    (:eval (mood-line-segment-buffer-name))
-                                    (:eval (mood-line-segment-anzu))
-                                    (:eval (mood-line-segment-multiple-cursors)))))
-
-                                 (format-mode-line
-                                  (quote
-                                   ((:eval (mood-line-segment-vc))
-                                    mode-line-modes
-                                    (:eval (mood-line-segment-global-mode-string))
-                                    (:eval (mood-line-segment-flycheck))
-                                    (:eval (mood-line-segment-process)) " ")))))))
+;; Can't rice on sadhu for some reason, so just leave it as is for now.
 
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
