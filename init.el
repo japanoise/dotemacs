@@ -23,6 +23,7 @@
 ;; ## Set up package lists & use-package
 (require 'package)
 (setq package-enable-at-startup nil)
+(setq package-check-signature nil)
 (setq tls-program '("gnutls-cli --tofu -p %p %h")
       imap-ssl-program
       '("gnutls-cli --tofu -p %p %s")
