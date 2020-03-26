@@ -250,5 +250,8 @@
 ;; yaml-mode
 (use-package yaml-mode)
 
+;; forth-mode
+(use-package forth-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
