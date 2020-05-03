@@ -253,5 +253,8 @@
 ;; forth-mode
 (use-package forth-mode)
 
+;; DLang
+(use-package d-mode)
+
 (provide 'chameleon-prog)
 ;;; chameleon-prog.el ends here
