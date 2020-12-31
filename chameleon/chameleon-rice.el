@@ -169,11 +169,12 @@
 ;; Modeline. Fuck it, vanilla is fine.
 (setq-default mode-line-format
       (list
+       "%3l:%2c "
        mode-line-modified
        " "
-       mode-line-buffer-identification
-       " -- %2l:%2c -- "
        mode-line-percent-position
+       " -- "
+       mode-line-buffer-identification
        " -- "
        mode-line-modes
        "%-"
