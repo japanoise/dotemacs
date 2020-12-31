@@ -162,9 +162,22 @@
 ;; spaces, which is gross but inevitable. I've already kind of lost this holy war.
 (setq-default indent-tabs-mode nil)
 
-(use-package mood-line)
-(mood-line-mode)
-;; Can't rice on sadhu for some reason, so just leave it as is for now.
+;; Mood-line, in case I want it again
+;;(use-package mood-line)
+;;(mood-line-mode)
+
+;; Modeline. Fuck it, vanilla is fine.
+(setq-default mode-line-format
+      (list
+       mode-line-modified
+       " "
+       mode-line-buffer-identification
+       " -- %2l:%2c -- "
+       mode-line-percent-position
+       " -- "
+       mode-line-modes
+       "%-"
+       ))
 
 (provide 'chameleon-rice)
 ;;; chameleon-rice.el ends here
