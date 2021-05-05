@@ -1,3 +1,5 @@
+Repository deprecated: new config is here: https://github.com/japanoise/neo-dotemacs
+
 * My .emacs.d
 
 Configuring emacs is far too much fun.
